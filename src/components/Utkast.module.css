@@ -1,7 +1,45 @@
 .utkast {
   text-align: left;
+  color: rgba(0, 0, 0, 0.56);
+  background-color: white;
+  padding: 80px;
+}
+
+.utkast h1 {
+  color: rgba(38, 38, 38, 1);
+  margin-bottom: 10px;
+}
+
+.utkast ul {
+  list-style: none;
+  padding: 0;
+  /* top | right | bottom | left */
+  margin: 50px 0 10px 0;
+}
+
+.utkast li {
+  background-color: rgba(247, 247, 247, 1);
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 0;
+  border-radius: 10px;
+  box-shadow: 0px 1px rgba(0, 0, 0, 0.12);
+}
+
+.utkast li a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.utkast li a h2 {
+  color: rgba(38, 38, 38, 1);
+}
+
+.utkast p {
+  margin-top: 10px;
 }
 
 .description {
-  border-bottom: solid;
+  border-bottom: solid gray 2px;
+  padding-bottom: 20px;
 }
