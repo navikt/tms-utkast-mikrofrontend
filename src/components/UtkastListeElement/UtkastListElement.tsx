@@ -1,6 +1,7 @@
 import React from "react";
 import { Heading } from "@navikt/ds-react";
 import { useIntl } from "react-intl";
+import { Next } from "@navikt/ds-icons";
 import dayjs from "dayjs";
 
 interface Props {
@@ -27,6 +28,7 @@ const UtkastListElement = ({ link, tittel, opprettet, sistEndret }: Props) => {
         <p>
           {translateDate("utkast.started", opprettet)} | {translateDate("utkast.lastUpdated", sistEndret || opprettet)}
         </p>
+        <Next />
       </a>
     </li>
   );
