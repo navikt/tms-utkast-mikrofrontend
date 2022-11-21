@@ -1,21 +1,33 @@
 import React from "react";
-import { BodyShort, Heading, Panel } from "@navikt/ds-react";
-import "./Utkast.css";
+import { BodyShort, Heading } from "@navikt/ds-react";
+import style from "./Utkast.module.css";
+import UtkastListElement from "./UtkastListeElement/UtkastListElement";
+import { useIntl } from "react-intl";
 
 interface Props {
-  tekst: string;
+  utkast: UtkastElement[];
 }
 
-const Utkast = ({ tekst }: Props) => {
+interface UtkastElement {
+  tittel: string;
+  link: string;
+  utkastId: string;
+}
+
+const Utkast = ({ utkast }: Props) => {
+  const intl = useIntl();
+  const translate = (id: string) => intl.formatMessage({ id: id });
+
   return (
-    <div className="utkast">
-      <Heading size={"large"}> Utkast </Heading>
-      <BodyShort className="description">
-        {" "}
-        Her finner du påbegynte søknader og andre skjemaer du ikke har sendt inn enda
-      </BodyShort>
+    <div className={style.utkast}>
+      <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
+      <BodyShort className={style.description}>{translate("utkast.description")}</BodyShort>
       <BodyShort>Sist oppdaert x minutter siden</BodyShort>
-      <ul></ul>
+      <ul>
+        {utkast?.map((u) => (
+          <UtkastListElement key={u.utkastId} tittel={u.tittel} link={u.link} />
+        ))}
+      </ul>
     </div>
   );
 };

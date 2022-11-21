@@ -11,7 +11,7 @@ function App() {
   return (
     <main className="main">
       <div className="app">
-        <Utkast tekst="hjas" />
+        <Utkast utkast={data} />
       </div>
     </main>
   );

@@ -39,6 +39,11 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
       fileName: () => `tms-utkast-mikrofrontend.js`,
     },
   },
+  css: {
+    modules: {
+      generateScopedName: "[name]__[local]__[hash:base64:5]",
+    },
+  },
   test: {
     globals: true,
     environment: "jsdom",
