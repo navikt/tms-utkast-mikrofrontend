@@ -9,7 +9,7 @@ type EnvUrl = { development: string; production: string };
 
 const API_URL: EnvUrl = {
   development: "http://localhost:3000/api/endpoint",
-  production: "https://person.nav.no/api/endpoint",
+  production: "https://tms-utkat",
 };
 
 export const apiUrl = API_URL[getEnvironment()];

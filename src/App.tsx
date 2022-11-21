@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { fetcher } from "./api/api";
 import { apiUrl } from "./api/urls";
-import Komponent from "./components/Komponent";
+import Utkast from "./components/Utkast";
 import "@navikt/ds-css";
 import "./App.css";
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <main className="main">
       <div className="app">
-        <Komponent tekst={data?.tekst} />
+        <Utkast tekst="hjas" />
       </div>
     </main>
   );
