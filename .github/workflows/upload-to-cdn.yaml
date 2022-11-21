@@ -24,21 +24,21 @@ jobs:
         run: "npm ci"
       - name: "Build application"
         run: "npm run build"
-#      - name: dev-upload
-#        uses: nais/frontend-plattform-cdn-upload-action@main
-#        with:
-#          cdn-environment: cdn.dev.nav.no
-#          cdn-team-name: min-side
-#          cache-invalidation: true
-#          source: ./dist/tms-mikrofrontend-template.js
-#          destination: "tms-mikrofrontend-template"
+      - name: dev-upload
+        uses: nais/frontend-plattform-cdn-upload-action@main
+        with:
+          cdn-environment: cdn.dev.nav.no
+          cdn-team-name: min-side
+          cache-invalidation: true
+          source: ./dist/tms-utkast-microfrontend.js
+          destination: "tms-utkast-microfrontend"
 
-#      - name: prod-upload
-#        if: github.ref == 'refs/heads/main'
-#        uses: nais/frontend-plattform-cdn-upload-action@main
-#        with:
-#          cdn-environment: cdn.nav.no
-#          cdn-team-name: min-side
-#          cache-invalidation: true
-#          source: ./dist/tms-mikrofrontend-template.js
-#          destination: "tms-mikrofrontend-template"
+      - name: prod-upload
+        if: github.ref == 'refs/heads/main'
+        uses: nais/frontend-plattform-cdn-upload-action@main
+        with:
+          cdn-environment: cdn.nav.no
+          cdn-team-name: min-side
+          cache-invalidation: true
+          source: ./dist/tms-utkast-microfrontend.js
+          destination: "tms-utkast-microfrontend"
