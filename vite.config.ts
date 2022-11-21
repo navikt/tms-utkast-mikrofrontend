@@ -34,9 +34,9 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
   build: {
     lib: {
       entry: resolve(__dirname, "src/Mikrofrontend.tsx"),
-      name: "tms-utkast-microfrontend",
+      name: "tms-utkast-mikrofrontend",
       formats: ["es"],
-      fileName: () => `tms-utkast-microfrontend.js`,
+      fileName: () => `tms-utkast-mikrofrontend.js`,
     },
   },
   test: {

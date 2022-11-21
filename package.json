@@ -1,5 +1,5 @@
 {
-  "name": "tms-utkast-microfrontend",
+  "name": "tms-utkast-mikrofrontend",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
