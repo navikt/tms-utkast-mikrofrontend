@@ -12,6 +12,8 @@ interface UtkastElement {
   tittel: string;
   link: string;
   utkastId: string;
+  opprettet: string;
+  sistEndret: string;
 }
 
 const Utkast = ({ utkast }: Props) => {
@@ -25,7 +27,13 @@ const Utkast = ({ utkast }: Props) => {
       <BodyShort>Sist oppdaert x minutter siden</BodyShort>
       <ul>
         {utkast?.map((u) => (
-          <UtkastListElement key={u.utkastId} tittel={u.tittel} link={u.link} />
+          <UtkastListElement
+            key={u.utkastId}
+            tittel={u.tittel}
+            link={u.link}
+            opprettet={u.opprettet}
+            sistEndret={u.sistEndret}
+          />
         ))}
       </ul>
     </div>

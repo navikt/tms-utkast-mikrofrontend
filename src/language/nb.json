@@ -1,4 +1,6 @@
 {
   "utkast.hovedoverskrift": "Utkast",
-  "utkast.description": "Her finner du påbegynte søknader og andre skjemaer du ikke har sendt inn enda"
+  "utkast.description": "Her finner du påbegynte søknader og andre skjemaer du ikke har sendt inn enda",
+  "utkast.started": "Påbegynt {date}",
+  "utkast.lastUpdated": "Sist endret {date}"
 }
