@@ -1,18 +1,26 @@
-function getEnvironment(): "production" | "development" {
-  if (process.env.NODE_ENV === "production") {
+const isProduction = window.location.href.includes("www.intern.nav.no") || window.location.href.includes("www.nav.no");
+const isDevelopment = window.location.href.includes("www.dev.nav.no");
+
+export const getEnvironment = () => {
+  if (isDevelopment) {
+    return "development";
+  }
+  if (isProduction) {
     return "production";
   }
-  return "development";
-}
+  return "local";
+};
 
-type EnvUrl = { development: string; production: string };
+type EnvUrl = { development: string; production: string; local: string };
 
 const API_URL: EnvUrl = {
-  development: "http://localhost:3000/api/endpoint",
-  production: "https://tms-utkast/",
+  local: "http://localhost:3000/api/endpoint",
+  development: "https://www.dev.nav.no/tms-min-side-proxy",
+  production: "https://www.nav.no/tms-min-side-proxy",
 };
 
 const BASE_URL: EnvUrl = {
+  local: "https://www.dev.nav.no/minside/",
   development: "https://www.dev.nav.no/minside/",
   production: "https://www.nav.no/minside/",
 };
