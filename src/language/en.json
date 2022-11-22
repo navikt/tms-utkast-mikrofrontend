@@ -6,5 +6,6 @@
   "utkast.empty.kitten": "A black cat hiding behind a piece of paper",
   "utkast.empty.subheading": "No drafts at this time",
   "utkast.empty.otherServices": "All services and benefits",
-  "laster": "Fetching content ..."
+  "loading": "Fetching content ...",
+  "error": "Something went wrong, and we were unable to fetch drafts. Please try again later"
 }

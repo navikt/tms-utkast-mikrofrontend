@@ -20,8 +20,7 @@
 .utkast ul {
   list-style: none;
   padding: 0;
-  /* top | right | bottom | left */
-  margin: 50px 0 10px 0;
+  margin: 29px 0 10px 0;
 }
 
 .utkast li {

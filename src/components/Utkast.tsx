@@ -3,9 +3,9 @@ import { BodyShort, Heading, Loader } from "@navikt/ds-react";
 import style from "./Utkast.module.css";
 import UtkastList from "./UtkastList/UtkastList";
 import { useIntl } from "react-intl";
-import EmptyUtkastList from "./EmptyUtkastList/EmptyUtkastList";
 
 export interface UtkastListProps {
+  dataError: boolean;
   utkast: UtkastElement[];
 }
 
@@ -17,7 +17,7 @@ export interface UtkastElement {
   sistEndret: string;
 }
 
-const Utkast = ({ utkast }: UtkastListProps) => {
+const Utkast = ({ utkast, dataError }: UtkastListProps) => {
   const intl = useIntl();
   const translate = (id: string) => intl.formatMessage({ id: id });
   return (
@@ -28,10 +28,8 @@ const Utkast = ({ utkast }: UtkastListProps) => {
         <div className={style.loadingDiv}>
           <Loader id="loader" size="3xlarge" title="venter..." />
         </div>
-      ) : utkast?.length > 0 ? (
-        <UtkastList utkast={utkast} />
       ) : (
-        <EmptyUtkastList />
+        <UtkastList utkast={utkast} dataError={dataError} />
       )}
     </div>
   );
