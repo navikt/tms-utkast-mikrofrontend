@@ -1,9 +1,10 @@
 import React from "react";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import style from "./Utkast.module.css";
-import UtkastList from "./UtkastListeElement/UtkastListElement";
+
 import { useIntl } from "react-intl";
 import EmptyUtkastList from "./EmptyUtkastList/EmptyUtkastList";
+import UtkastList from "./UtkastList/UtkastList";
 
 export interface UtkastListProps {
   utkast: UtkastElement[];
