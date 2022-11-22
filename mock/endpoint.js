@@ -4,7 +4,7 @@ export default [
     method: "get",
     response: () => {
       return [
-        /* {
+        {
           tittel: "Søknad om dagpenger, permittert",
           link: "https://www.dev.nav.no/minside/",
           opprettet: "2020-03-13T08:53:24.636Z",
@@ -15,7 +15,7 @@ export default [
           link: "https://www.dev.nav.no/minside/",
           opprettet: "2020-03-13T08:53:24.636Z",
           sistEndret: "2020-03-14T08:53:24.636Z",
-        },*/
+        },
       ];
     },
   },

@@ -6,13 +6,11 @@ import "@navikt/ds-css";
 import style from "./App.module.css";
 
 function App() {
-  const { data } = useQuery(apiUrl, fetcher);
+  const { isError, data } = useQuery(apiUrl, fetcher);
 
   return (
     <main className={style.main}>
-      <div className={style.app}>
-        <Utkast utkast={data} />
-      </div>
+      <div className={style.app}>{isError ? <p>Noe gikk galt</p> : <Utkast utkast={data} />}</div>
     </main>
   );
 }
