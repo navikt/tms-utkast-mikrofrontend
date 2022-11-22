@@ -7,7 +7,6 @@ import style from "./App.module.css";
 
 function App() {
   const { isError, data } = useQuery(apiUrl, fetcher);
-
   return (
     <main className={style.main}>
       <div className={style.app}>{isError ? <p>Noe gikk galt</p> : <Utkast utkast={data} />}</div>

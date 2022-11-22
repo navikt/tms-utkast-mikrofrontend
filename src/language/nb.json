@@ -5,5 +5,6 @@
   "utkast.lastUpdated": "Sist endret {date}",
   "utkast.empty.kitten": "En svart katt som gjemmer seg bak ett papirark",
   "utkast.empty.subheading": "Ikke noe i utkast for øyeblikket",
-  "utkast.empty.otherServices": "Pengestøtte og tjenester A-Å"
+  "utkast.empty.otherServices": "Pengestøtte og tjenester A-Å",
+  "laster": "Henter innhold ..."
 }
