@@ -2,5 +2,8 @@
   "utkast.hovedoverskrift": "Utkast",
   "utkast.description": "Her finner du påbegynte søknader og andre skjemaer du ikke har sendt inn enda",
   "utkast.started": "Påbegynt {date}",
-  "utkast.lastUpdated": "Sist endret {date}"
+  "utkast.lastUpdated": "Sist endret {date}",
+  "utkast.empty.kitten": "En svart katt som gjemmer seg bak ett papirark",
+  "utkast.empty.subheading": "Ikke noe i utkast for øyeblikket",
+  "utkast.empty.otherServices": "Pengestøtte og tjenester A-Å"
 }

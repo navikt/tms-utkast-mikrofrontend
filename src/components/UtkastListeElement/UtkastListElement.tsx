@@ -3,35 +3,33 @@ import { Heading } from "@navikt/ds-react";
 import { useIntl } from "react-intl";
 import { Next } from "@navikt/ds-icons";
 import dayjs from "dayjs";
-
-interface Props {
-  link: string;
-  tittel: string;
-  opprettet: string;
-  sistEndret: string | null;
-}
+import { UtkastListProps } from "../Utkast";
 
 const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
 };
 
-const UtkastListElement = ({ link, tittel, opprettet, sistEndret }: Props) => {
+const UtkastList = ({ utkast }: UtkastListProps) => {
   const intl = useIntl();
   const translateDate = (id: string, date: string) => intl.formatMessage({ id: id }, { date: dateFormatter(date) });
-
   return (
-    <li>
-      <a href={link}>
-        <Heading size={"small"} level={"2"}>
-          {tittel}
-        </Heading>
-        <p>
-          {translateDate("utkast.started", opprettet)} | {translateDate("utkast.lastUpdated", sistEndret || opprettet)}
-        </p>
-        <Next />
-      </a>
-    </li>
+    <ul>
+      {utkast?.map((u) => (
+        <li key={u.utkastId}>
+          <a href={u.link}>
+            <Heading size={"small"} level={"2"}>
+              {u.tittel}
+            </Heading>
+            <p>
+              {translateDate("utkast.started", u.opprettet)} |{" "}
+              {translateDate("utkast.lastUpdated", u.sistEndret || u.opprettet)}
+            </p>
+            <Next />
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 };
 
-export default UtkastListElement;
+export default UtkastList;

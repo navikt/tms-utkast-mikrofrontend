@@ -3,14 +3,14 @@ import { fetcher } from "./api/api";
 import { apiUrl } from "./api/urls";
 import Utkast from "./components/Utkast";
 import "@navikt/ds-css";
-import "./App.css";
+import style from "./App.module.css";
 
 function App() {
   const { data } = useQuery(apiUrl, fetcher);
 
   return (
-    <main className="main">
-      <div className="app">
+    <main className={style.main}>
+      <div className={style.app}>
         <Utkast utkast={data} />
       </div>
     </main>

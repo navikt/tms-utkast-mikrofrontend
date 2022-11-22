@@ -1,7 +1,6 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
-import "./App.css";
 import LanguageProvider from "./providers/LanguageProvider";
 
 const Mikrofrontend = () => {

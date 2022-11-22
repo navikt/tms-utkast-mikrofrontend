@@ -5,7 +5,7 @@ import Utkast from "./Utkast";
 
 describe("Simple working test for Komponent", () => {
   it("has a text", () => {
-    render(<Utkast tekst="tekst" />);
+    render(<Utkast utkast={[]} />);
     expect(screen.getByText(/tekst/)).toBeDefined();
   });
 });
