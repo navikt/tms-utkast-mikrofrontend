@@ -8,11 +8,11 @@ import style from "./App.module.css";
 function App() {
   const { status, data } = useQuery(apiUrl, fetcher);
   return (
-    <main className={style.main}>
+    <div className={style.main}>
       <div className={style.app}>
         <Utkast utkast={data} status={status} />
       </div>
-    </main>
+    </div>
   );
 }
 
