@@ -7,5 +7,6 @@
   "utkast.empty.subheading": "No drafts at this time",
   "utkast.empty.otherServices": "All services and benefits",
   "loading": "Fetching content ...",
-  "error": "Something went wrong, and we were unable to fetch drafts. Please try again later"
+  "error": "Something went wrong, and we were unable to fetch drafts. Please try again later",
+  "error.kitten": "A cat that has attempted to jump into a box, but gotten stuck"
 }

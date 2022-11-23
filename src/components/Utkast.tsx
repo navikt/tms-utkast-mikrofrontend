@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 
 export interface UtkastListProps {
   dataError: boolean;
-  utkast: UtkastElement[];
+  utkast: UtkastElement[] | undefined;
 }
 
 export interface UtkastElement {

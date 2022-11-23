@@ -7,5 +7,6 @@
   "utkast.empty.subheading": "Ikke noe i utkast for øyeblikket",
   "utkast.empty.otherServices": "Pengestøtte og tjenester A-Å",
   "loading": "Henter innhold ...",
-  "error": "Noe gikk galt og vi klarte ikke å hente utkastene dine. Prøv igjen senere."
+  "error": "Noe gikk galt og vi klarte ikke å hente utkastene dine. Prøv igjen senere.",
+  "error.kitten": "En katt som har forsøkt å hoppe inn i en boks, men satt seg fast"
 }
