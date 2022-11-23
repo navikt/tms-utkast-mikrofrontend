@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { UtkastListProps } from "../Utkast";
 import ErrorDescription from "../ErrorDescription/ErrorDescription";
 import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
+import styles from "./UtkastList.module.css";
 
 const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
@@ -31,7 +32,9 @@ const UtkastList = ({ utkast, dataError }: UtkastListProps) => {
                 {translateDate("utkast.started", u.opprettet)} |{" "}
                 {translateDate("utkast.lastUpdated", u.sistEndret || u.opprettet)}
               </p>
-              <Next />
+              <div className={styles.nextDiv}>
+                <Next className={styles.nextIcon} />
+              </div>
             </a>
           </li>
         ))}

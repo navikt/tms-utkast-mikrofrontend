@@ -6,7 +6,7 @@ import "@navikt/ds-css";
 import style from "./App.module.css";
 
 function App() {
-  const { isError, data } = useQuery(apiUrl, fetcher);
+  const { isError, data } = useQuery(apiUrl + "/utkast", fetcher);
   return (
     <main className={style.main}>
       <div className={style.app}>
