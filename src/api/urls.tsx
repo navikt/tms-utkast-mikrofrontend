@@ -14,9 +14,9 @@ export const getEnvironment = () => {
 type EnvUrl = { development: string; production: string; local: string };
 
 const API_URL: EnvUrl = {
-  local: "http://localhost:3000/api/endpoint",
-  development: "https://www.dev.nav.no/tms-min-side-proxy",
-  production: "https://www.nav.no/tms-min-side-proxy",
+  local: "http://localhost:3000/api/endpoint/utkast",
+  development: "https://www.dev.nav.no/tms-min-side-proxy/utkast",
+  production: "https://www.nav.no/tms-min-side-proxy/utkast",
 };
 
 const BASE_URL: EnvUrl = {
