@@ -3,12 +3,9 @@
   padding: 16px;
 }
 
-.loading {
-  text-align: center;
-}
-
 .loadingDiv {
   margin-top: 30px;
+  text-align: center;
 }
 
 .utkast h1 {

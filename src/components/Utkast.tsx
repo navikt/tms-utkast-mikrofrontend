@@ -22,7 +22,7 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
   const translate = (id: string) => intl.formatMessage({ id: id });
 
   return (
-    <div className={`${style.utkast} ${utkast == undefined ? style.loading : ""}`}>
+    <div className={style.utkast}>
       <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
       <BodyShort className={style.description}>{translate("utkast.description")}</BodyShort>
       {status == "loading" ? (
