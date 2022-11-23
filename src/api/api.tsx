@@ -13,6 +13,7 @@ export const fetcher = async (queryFunctionContext: QueryFunctionContext) => {
     method: "GET",
     credentials: "include",
   });
+
   checkResponse(response);
   return response.json();
 };

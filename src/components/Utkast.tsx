@@ -5,7 +5,7 @@ import UtkastList from "./UtkastList/UtkastList";
 import { useIntl } from "react-intl";
 
 export interface UtkastListProps {
-  dataError: boolean;
+  status: string;
   utkast: UtkastElement[] | undefined;
 }
 
@@ -17,19 +17,20 @@ export interface UtkastElement {
   sistEndret: string;
 }
 
-const Utkast = ({ utkast, dataError }: UtkastListProps) => {
+const Utkast = ({ utkast, status }: UtkastListProps) => {
   const intl = useIntl();
   const translate = (id: string) => intl.formatMessage({ id: id });
+
   return (
     <div className={`${style.utkast} ${utkast == undefined ? style.loading : ""}`}>
       <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
       <BodyShort className={style.description}>{translate("utkast.description")}</BodyShort>
-      {utkast == undefined ? (
+      {status == "loading" ? (
         <div className={style.loadingDiv}>
           <Loader id="loader" size="3xlarge" title="venter..." />
         </div>
       ) : (
-        <UtkastList utkast={utkast} dataError={dataError} />
+        <UtkastList utkast={utkast} status={status} />
       )}
     </div>
   );

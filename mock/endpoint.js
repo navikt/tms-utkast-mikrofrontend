@@ -21,4 +21,19 @@ export default [
       ];
     },
   },
+  {
+    url: "/api/endpoint/utkast/tom",
+    method: "get",
+    response: () => {
+      return [];
+    },
+  },
+  {
+    url: "/api/endpoint/utkast/feiltest",
+    method: "get",
+    rawResponse: async (req, res) => {
+      res.statusCode = 500;
+      res.end();
+    },
+  },
 ];

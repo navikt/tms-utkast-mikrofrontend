@@ -12,12 +12,12 @@ const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
 };
 
-const UtkastList = ({ utkast, dataError }: UtkastListProps) => {
+const UtkastList = ({ utkast, status }: UtkastListProps) => {
   const intl = useIntl();
   const translateDate = (id: string, date: string) => intl.formatMessage({ id: id }, { date: dateFormatter(date) });
-  if (dataError) {
+  if (status == "error") {
     return <ErrorDescription />;
-  } else if (utkast.length == 0) {
+  } else if (utkast != undefined && utkast.length == 0) {
     return <EmptyUtkastList />;
   } else
     return (
