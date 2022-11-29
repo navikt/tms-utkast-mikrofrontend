@@ -15,9 +15,7 @@ const dateFormatter = (date: string) => {
 const UtkastList = ({ utkast, status }: UtkastListProps) => {
   const intl = useIntl();
   const translateDate = (id: string, date: string) => intl.formatMessage({ id: id }, { date: dateFormatter(date) });
-  if (status == "error") {
-    return <ErrorDescription />;
-  } else if (utkast != undefined && utkast.length == 0) {
+  if (utkast != undefined && utkast.length == 0) {
     return <EmptyUtkastList />;
   } else
     return (

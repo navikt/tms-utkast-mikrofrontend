@@ -7,6 +7,9 @@
   "utkast.empty.subheading": "Nothing in drafts",
   "utkast.empty.otherServices": "All services and benefits",
   "loading": "Fetching content ...",
-  "error": "Something went wrong, and we were unable to fetch drafts. Please try again later",
-  "error.kitten": "A cat that has attempted to jump into a box, but gotten stuck"
+  "error.heading": "Oups, something went wrong!",
+  "error.text": "We couldn't find the content you were looking for",
+  "error.help": "Try again later or go to",
+  "error.kitten": "A cat that has attempted to jump into a box, but gotten stuck",
+  "min.side": "My Page"
 }

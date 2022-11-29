@@ -4,13 +4,14 @@ import { apiUrl } from "./api/urls";
 import Utkast from "./components/Utkast";
 import "@navikt/ds-css";
 import style from "./App.module.css";
+import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 
 function App() {
   const { status, data } = useQuery(apiUrl, fetcher);
   return (
     <div className={style.main}>
       <div className={style.app}>
-        <Utkast utkast={data} status={status} />
+        {status == "error" ? <ErrorDescription /> : <Utkast utkast={data} status={status} />}
       </div>
     </div>
   );
