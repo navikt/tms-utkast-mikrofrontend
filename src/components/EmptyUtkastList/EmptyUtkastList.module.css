@@ -1,4 +1,18 @@
 .ingenUtkast {
-  text-align: center;
   margin-top: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-right: 16px;
+  width: 100%;
+}
+
+.ingenUtkastTekst a {
+  color: var(--a-text-subtle);
+  font-size: 18px;
+}
+
+.ingenUtkastTekst {
+  color: var(--a-text-default);
+  font-size: 20px;
 }

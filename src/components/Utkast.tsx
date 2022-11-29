@@ -25,13 +25,15 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
     <div className={style.utkast}>
       <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
       <Ingress>{translate("utkast.description")}</Ingress>
-      {status == "loading" ? (
-        <div className={style.loadingDiv}>
-          <Loader id="loader" size="3xlarge" title="venter..." />
-        </div>
-      ) : (
-        <UtkastList utkast={utkast} status={status} />
-      )}
+      <div className={style.utkastContainer}>
+        {status == "loading" ? (
+          <div className={style.loadingDiv}>
+            <Loader id="loader" size="3xlarge" title="venter..." />
+          </div>
+        ) : (
+          <UtkastList utkast={utkast} status={status} />
+        )}
+      </div>
     </div>
   );
 };

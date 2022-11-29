@@ -15,3 +15,10 @@
   color: var(--a-text-default);
   margin-bottom: 10px;
 }
+
+.utkastContainer {
+  margin-top: 16px;
+  padding: 16px 16px;
+  background-color: var(--a-surface-danger-subtle);
+  min-height: 600px;
+}
