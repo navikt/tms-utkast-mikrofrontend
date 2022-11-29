@@ -40,7 +40,7 @@
 
 .utkast li a p {
   /* top | right | bottom | left */
-  margin: 5px auto 0 auto;
+  margin: 4px auto 0 auto;
 }
 
 .utkast p {
@@ -48,6 +48,6 @@
 }
 
 .description {
-  border-bottom: solid gray 1px;
-  padding-bottom: 20px;
+  font-size: 20px;
+  /*farge subtle fra designsystemet*/
 }

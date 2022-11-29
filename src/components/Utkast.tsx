@@ -1,5 +1,5 @@
 import React from "react";
-import { BodyShort, Heading, Loader } from "@navikt/ds-react";
+import { BodyShort, Heading, Ingress, Loader } from "@navikt/ds-react";
 import style from "./Utkast.module.css";
 import UtkastList from "./UtkastList/UtkastList";
 import { useIntl } from "react-intl";
@@ -24,7 +24,7 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
   return (
     <div className={style.utkast}>
       <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
-      <BodyShort className={style.description}>{translate("utkast.description")}</BodyShort>
+      <Ingress className={style.description}>{translate("utkast.description")}</Ingress>
       {status == "loading" ? (
         <div className={style.loadingDiv}>
           <Loader id="loader" size="3xlarge" title="venter..." />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading } from "@navikt/ds-react";
+import { BodyLong, Heading } from "@navikt/ds-react";
 import { useIntl } from "react-intl";
 import { Next } from "@navikt/ds-icons";
 import dayjs from "dayjs";
@@ -21,17 +21,17 @@ const UtkastList = ({ utkast, status }: UtkastListProps) => {
     return <EmptyUtkastList />;
   } else
     return (
-      <ul>
+      <ul className={styles.utkastList}>
         {utkast?.map((u) => (
           <li key={u.utkastId}>
             <a href={u.link}>
-              <Heading size={"small"} level={"2"}>
+              <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
                 {u.tittel}
               </Heading>
-              <p>
+              <BodyLong size={"small"}>
                 {translateDate("utkast.started", u.opprettet)} |{" "}
                 {translateDate("utkast.lastUpdated", u.sistEndret || u.opprettet)}
-              </p>
+              </BodyLong>
               <div className={styles.nextDiv}>
                 <Next className={styles.nextIcon} />
               </div>
