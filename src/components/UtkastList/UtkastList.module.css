@@ -1,11 +1,8 @@
-.nextIconSpan {
-  font-size: 24px;
-  color: var(--a-text-subtle);
-}
-
-.nextIconSpan svg {
+.nextIcon svg {
   display: inline-block;
   vertical-align: middle;
+  font-size: 24px;
+  color: var(--a-text-subtle);
 }
 
 .listContentSpan {
@@ -35,7 +32,11 @@
 .utkastList li a {
   text-decoration: none;
   color: var(--a-text-subtle);
-  display: inline-flex;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 16px;
   width: 100%;
 }
 
