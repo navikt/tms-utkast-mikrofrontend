@@ -1,5 +1,49 @@
-.nextDiv {
-  text-align: end;
+.nextIconSpan {
   font-size: 24px;
   color: rgba(0, 0, 0, 0.56);
+}
+
+.nextIconSpan svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.listContentSpan {
+  width: 99%;
+}
+
+.utkastList {
+  list-style: none;
+  padding: 0;
+  margin: 29px 0 10px 0;
+}
+
+.utkastList li {
+  background-color: rgba(247, 247, 247, 1);
+  /* top | right | bottom | left */
+  padding: 16px 16px 0px 16px;
+  margin-top: 10px;
+  margin-left: 0;
+  border-radius: 10px;
+  box-shadow: 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.utkastList li a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.56);
+  display: inline-flex;
+  width: 100%;
+}
+
+.utkastList li a h2 {
+  color: rgba(38, 38, 38, 1);
+}
+
+.utkastList li a p {
+  /* top | right | bottom | left */
+  margin: 4px auto 0 auto;
+}
+
+.utkastList p {
+  margin-top: 10px;
 }

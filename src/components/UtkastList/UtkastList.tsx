@@ -25,16 +25,18 @@ const UtkastList = ({ utkast, status }: UtkastListProps) => {
         {utkast?.map((u) => (
           <li key={u.utkastId}>
             <a href={u.link}>
-              <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
-                {u.tittel}
-              </Heading>
-              <BodyLong size={"small"}>
-                {translateDate("utkast.started", u.opprettet)} |{" "}
-                {translateDate("utkast.lastUpdated", u.sistEndret || u.opprettet)}
-              </BodyLong>
-              <div className={styles.nextDiv}>
+              <span className={styles.listContentSpan}>
+                <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
+                  {u.tittel}
+                </Heading>
+                <BodyLong size={"small"}>
+                  {translateDate("utkast.started", u.opprettet)} |{" "}
+                  {translateDate("utkast.lastUpdated", u.sistEndret || u.opprettet)}
+                </BodyLong>
+              </span>
+              <span className={styles.nextIconSpan}>
                 <Next className={styles.nextIcon} />
-              </div>
+              </span>
             </a>
           </li>
         ))}
