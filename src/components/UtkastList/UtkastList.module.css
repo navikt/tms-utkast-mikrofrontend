@@ -21,7 +21,7 @@
 .utkastList li {
   background-color: rgba(247, 247, 247, 1);
   /* top | right | bottom | left */
-  padding: 16px 16px 0px 16px;
+  padding: 16px 16px 16px 16px;
   margin-top: 10px;
   margin-left: 0;
   border-radius: 10px;

@@ -1,6 +1,9 @@
+@import "@navikt/ds-tokens";
+
 .utkast {
-  color: rgba(0, 0, 0, 0.56);
+  color: var(--a-text-subtle);
   padding: 16px;
+  max-width: 600px;
 }
 
 .loadingDiv {
@@ -9,11 +12,6 @@
 }
 
 .utkast h1 {
-  color: rgba(38, 38, 38, 1);
+  color: var(--a-text-default);
   margin-bottom: 10px;
-}
-
-.description {
-  font-size: 20px;
-  /*farge subtle fra designsystemet*/
 }

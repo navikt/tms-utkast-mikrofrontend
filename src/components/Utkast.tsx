@@ -24,7 +24,7 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
   return (
     <div className={style.utkast}>
       <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
-      <Ingress className={style.description}>{translate("utkast.description")}</Ingress>
+      <Ingress>{translate("utkast.description")}</Ingress>
       {status == "loading" ? (
         <div className={style.loadingDiv}>
           <Loader id="loader" size="3xlarge" title="venter..." />

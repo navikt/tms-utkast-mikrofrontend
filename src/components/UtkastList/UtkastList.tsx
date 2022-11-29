@@ -29,10 +29,7 @@ const UtkastList = ({ utkast, status }: UtkastListProps) => {
                 <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
                   {u.tittel}
                 </Heading>
-                <BodyLong size={"small"}>
-                  {translateDate("utkast.started", u.opprettet)} |{" "}
-                  {translateDate("utkast.lastUpdated", u.sistEndret || u.opprettet)}
-                </BodyLong>
+                <BodyLong size={"small"}>{translateDate("utkast.started", u.opprettet)}</BodyLong>
               </span>
               <span className={styles.nextIconSpan}>
                 <Next className={styles.nextIcon} />
