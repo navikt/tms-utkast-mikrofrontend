@@ -4,6 +4,6 @@ body {
 }
 
 body {
-  background-color: var(--navds-semantic-color-canvas-background);
+  background-color: var(--a-surface-default);
   font-family: sans-serif;
 }
