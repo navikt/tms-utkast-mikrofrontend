@@ -27,21 +27,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
       - name: "Build application"
         run: "npm run build"
-      - name: dev-upload
-        uses: nais/frontend-plattform-cdn-upload-action@main
+      - name: cdn-upload
+        uses: navikt/frontend/actions/cdn-upload/v1@main
         with:
-          cdn-environment: cdn.dev.nav.no
           cdn-team-name: min-side
           cache-invalidation: true
           source: ./dist/tms-utkast-mikrofrontend.js
           destination: "tms-utkast-mikrofrontend"
 
-      - name: prod-upload
-        if: github.ref == 'refs/heads/main'
-        uses: nais/frontend-plattform-cdn-upload-action@main
-        with:
-          cdn-environment: cdn.nav.no
-          cdn-team-name: min-side
-          cache-invalidation: true
-          source: ./dist/tms-utkast-mikrofrontend.js
-          destination: "tms-utkast-mikrofrontend"
