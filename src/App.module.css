@@ -1,7 +1,5 @@
-.main {
-  height: auto;
-  min-height: 100%;
-  /*background-color: var(--a-white);*/
+.body {
+  background-color: white !important;
 }
 
 .app {
