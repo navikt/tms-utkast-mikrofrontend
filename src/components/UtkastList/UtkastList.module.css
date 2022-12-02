@@ -37,6 +37,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin-right: 16px;
+  padding-left: 16px;
   width: 100%;
 }
 
