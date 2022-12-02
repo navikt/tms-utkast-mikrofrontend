@@ -22,9 +22,11 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
   const translate = (id: string) => intl.formatMessage({ id: id });
 
   return (
-    <div className={style.utkast}>
-      <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
-      <Ingress>{translate("utkast.description")}</Ingress>
+    <div>
+      <div className={style.utkast}>
+        <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
+        <Ingress>{translate("utkast.description")}</Ingress>
+      </div>
       <div className={style.utkastContainer}>
         {status == "loading" ? (
           <div className={style.loadingDiv}>

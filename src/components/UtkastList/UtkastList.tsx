@@ -4,9 +4,9 @@ import { useIntl } from "react-intl";
 import { Next } from "@navikt/ds-icons";
 import dayjs from "dayjs";
 import { UtkastListProps } from "../Utkast";
-import ErrorDescription from "../ErrorDescription/ErrorDescription";
 import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
 import styles from "./UtkastList.module.css";
+import { Edit } from "@navikt/ds-icons";
 
 const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
@@ -23,6 +23,9 @@ const UtkastList = ({ utkast, status }: UtkastListProps) => {
         {utkast?.map((u) => (
           <li key={u.utkastId}>
             <a href={u.link}>
+              <span className={styles.editSvg}>
+                <Edit aria-hidden={"true"} />
+              </span>
               <span className={styles.listContentSpan}>
                 <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
                   {u.tittel}
