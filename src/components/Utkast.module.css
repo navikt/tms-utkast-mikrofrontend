@@ -6,8 +6,26 @@
 }
 .utkast {
   color: var(--a-text-subtle);
+  background-color: white;
   padding: 16px;
   max-width: 600px;
+}
+
+@media (min-width: 800px) {
+  .utkast {
+    margin-left: 20%;
+  }
+  .utkastContainer ul {
+    margin-left: 20%;
+  }
+}
+@media (max-width: 800px) {
+  .utkast {
+    margin-left: 1%;
+  }
+  .utkastContainer ul {
+    margin-left: 1%;
+  }
 }
 
 .loadingDiv {

@@ -17,7 +17,7 @@
 
 .utkastList li {
   background-color: var(--a-surface-default);
-  padding: 1px;
+  padding: 16px;
   margin-top: 10px;
   border-radius: 8px;
   box-shadow: 0 1px rgba(0, 0, 0, 0.12);
@@ -26,7 +26,12 @@
   align-items: center;
   gap: 16px;
   max-width: 600px;
-  height: 84px;
+}
+
+@media (max-width: 360px) {
+  .utkastList li {
+    word-break: break-all;
+  }
 }
 
 .utkastList li a {

@@ -9,11 +9,11 @@ import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 function App() {
   const { status, data } = useQuery(apiUrl, fetcher);
   return (
-    <div className={style.main}>
+    <main className={style.main}>
       <div className={style.app}>
         {status == "error" ? <ErrorDescription /> : <Utkast utkast={data} status={status} />}
       </div>
-    </div>
+    </main>
   );
 }
 
