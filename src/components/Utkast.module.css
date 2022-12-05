@@ -3,7 +3,6 @@
 .utkast {
   color: var(--a-text-subtle);
   padding: 16px;
-  max-width: 600px;
 }
 
 .loadingDiv {
@@ -18,6 +17,6 @@
 
 .utkastContainer {
   padding: 0 16px 16px 16px;
-  /*background-color: var(--a-surface-danger-subtle);*/
+  background-color: var(--a-surface-danger-subtle);
   min-height: 600px;
 }
