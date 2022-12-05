@@ -32,7 +32,7 @@ const UtkastList = ({ utkast, status }: UtkastListProps) => {
                 </Heading>
                 <BodyLong size={"small"}>{translateDate("utkast.started", u.opprettet)}</BodyLong>
               </span>
-              <Next className={styles.nextIcon} />
+              <Next className={styles.nextIcon} aria-hidden={"true"} />
             </a>
           </li>
         ))}
