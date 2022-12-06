@@ -8,6 +8,9 @@
   color: var(--a-text-subtle);
   padding: 16px;
 }
+.utkast p {
+  max-width: 600px;
+}
 
 @media (min-width: 800px) {
   .utkast {
