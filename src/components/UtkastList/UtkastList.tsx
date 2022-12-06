@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { UtkastListProps } from "../Utkast";
 import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
 import styles from "./UtkastList.module.css";
+import glocalStyles from "../../App.module.css";
 import { Edit } from "@navikt/ds-icons";
 
 const dateFormatter = (date: string) => {
@@ -19,7 +20,7 @@ const UtkastList = ({ utkast, status }: UtkastListProps) => {
     return <EmptyUtkastList />;
   } else
     return (
-      <ul className={styles.utkastList}>
+      <ul className={`${styles.utkastList} ${glocalStyles.tekstinnhold}`}>
         {utkast?.map((u) => (
           <li key={u.utkastId}>
             <a href={u.link}>

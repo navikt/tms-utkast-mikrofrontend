@@ -8,26 +8,6 @@
   color: var(--a-text-subtle);
   padding: 16px;
 }
-.utkast p {
-  max-width: 600px;
-}
-
-@media (min-width: 800px) {
-  .utkast {
-    margin-left: 15%;
-  }
-  .utkastContainer ul {
-    margin-left: 15%;
-  }
-}
-@media (max-width: 800px) {
-  .utkast {
-    margin-left: 1%;
-  }
-  .utkastContainer ul {
-    margin-left: 1%;
-  }
-}
 
 .loadingDiv {
   margin-top: 30px;
@@ -43,8 +23,4 @@
   padding: 0 16px 16px 16px;
   background-color: var(--a-surface-danger-subtle);
   min-height: 600px;
-}
-
-.utkastContainer ul {
-  max-width: 600px;
 }
