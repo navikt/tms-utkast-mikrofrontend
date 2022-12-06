@@ -7,7 +7,7 @@ import style from "./App.module.css";
 import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 
 function App() {
-  const { status, data } = useQuery(apiUrl + "/tom", fetcher);
+  const { status, data } = useQuery(apiUrl, fetcher);
   return (
     <main className={style.main}>
       <div className={style.app}>
