@@ -4,7 +4,6 @@ import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
 import { useIntl } from "react-intl";
-import glocalStyles from "../App.module.css";
 
 export interface UtkastListProps {
   status: string;
@@ -25,7 +24,7 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
 
   return (
     <div className={styles.utkastWrapper}>
-      <div className={`${styles.utkast} ${glocalStyles.tekstinnhold}`}>
+      <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
         <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
         <Ingress>{translate("utkast.description")}</Ingress>
       </div>

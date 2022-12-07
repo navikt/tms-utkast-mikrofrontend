@@ -13,7 +13,7 @@ const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
 };
 
-const UtkastList = ({ utkast, status }: UtkastListProps) => {
+const UtkastList = ({ utkast }: UtkastListProps) => {
   const intl = useIntl();
   const translateDate = (id: string, date: string) => intl.formatMessage({ id: id }, { date: dateFormatter(date) });
   if (utkast != undefined && utkast.length == 0) {
