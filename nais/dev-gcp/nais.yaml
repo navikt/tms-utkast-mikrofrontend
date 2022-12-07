@@ -1,0 +1,31 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: utkast-mikrofrontend
+  namespace: min-side
+  labels:
+    team: min-side
+spec:
+  image: {{ image }}
+  port: 7800
+  liveness:
+    path: /tms-utkast-mikrofrontend/internal/isAlive
+    initialDelay: 10
+  readiness:
+    path: /tms-utkast-mikrofrontend/internal/isReady
+    initialDelay: 10
+  prometheus:
+    enabled: true
+    path: /tms-utkast-mikrofrontend/internal/metrics
+  replicas:
+    min: 2
+    max: 4
+  ingresses:
+    - "https://www.dev.nav.no/tms-utkast-mikrofrontend"
+  resources:
+    limits:
+      cpu: "3"
+      memory: 768Mi
+    requests:
+      cpu: "500m"
+      memory: 512Mi
