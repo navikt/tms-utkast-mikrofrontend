@@ -3,11 +3,15 @@ import { BodyLong, Heading } from "@navikt/ds-react";
 import { useIntl } from "react-intl";
 import { Next } from "@navikt/ds-icons";
 import dayjs from "dayjs";
-import { UtkastListProps } from "../Utkast";
+import { UtkastElement } from "../Utkast";
 import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
 import styles from "./UtkastList.module.css";
 import glocalStyles from "../../App.module.css";
 import { Edit } from "@navikt/ds-icons";
+
+export interface UtkastListProps {
+  utkast: UtkastElement[] | undefined;
+}
 
 const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");

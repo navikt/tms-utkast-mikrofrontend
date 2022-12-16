@@ -5,8 +5,8 @@ import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
 import { useIntl } from "react-intl";
 
-export interface UtkastListProps {
-  status: string;
+export interface UtkastProps {
+  loading: boolean;
   utkast: UtkastElement[] | undefined;
 }
 
@@ -18,10 +18,9 @@ export interface UtkastElement {
   sistEndret: string;
 }
 
-const Utkast = ({ utkast, status }: UtkastListProps) => {
+const Utkast = ({ utkast, loading }: UtkastProps) => {
   const intl = useIntl();
   const translate = (id: string) => intl.formatMessage({ id: id });
-
   return (
     <div className={styles.utkastWrapper}>
       <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
@@ -29,12 +28,12 @@ const Utkast = ({ utkast, status }: UtkastListProps) => {
         <Ingress>{translate("utkast.description")}</Ingress>
       </div>
       <div className={styles.utkastContainer}>
-        {status == "loading" ? (
+        {loading ? (
           <div className={styles.loadingDiv}>
             <Loader id="loader" size="3xlarge" title="venter..." />
           </div>
         ) : (
-          <UtkastList utkast={utkast} status={status} />
+          <UtkastList utkast={utkast} />
         )}
       </div>
     </div>
