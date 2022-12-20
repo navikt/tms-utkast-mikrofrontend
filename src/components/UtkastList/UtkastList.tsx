@@ -24,7 +24,7 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
     return <EmptyUtkastList />;
   } else
     return (
-      <ul className={`${styles.utkastList} ${glocalStyles.tekstinnhold}`}>
+      <ul className={`${styles.utkastList} ${glocalStyles.tekstinnhold}`} data-testid="utkastlist">
         {utkast?.map((u) => (
           <li key={u.utkastId}>
             <a href={u.link}>
