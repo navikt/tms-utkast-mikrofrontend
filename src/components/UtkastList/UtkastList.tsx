@@ -13,6 +13,11 @@ export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
 }
 
+interface UtkastListElementProps {
+  utkast: UtkastElement;
+  key: string;
+}
+
 const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
 };
@@ -26,23 +31,31 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
     return (
       <ul className={`${styles.utkastList} ${glocalStyles.tekstinnhold}`} data-testid="utkastlist">
         {utkast?.map((u) => (
-          <li key={u.utkastId}>
-            <a href={u.link}>
-              <span className={styles.editSvg}>
-                <Edit aria-hidden={"true"} />
-              </span>
-              <span className={styles.listContentSpan}>
-                <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
-                  {u.tittel}
-                </Heading>
-                <BodyLong size={"small"}>{translateDate("utkast.started", u.opprettet)}</BodyLong>
-              </span>
-              <Next className={styles.nextIcon} aria-hidden={"true"} />
-            </a>
-          </li>
+          <UtkastListElement utkast={u} key={u.utkastId} />
         ))}
       </ul>
     );
+};
+
+export const UtkastListElement = ({ utkast, key }: UtkastListElementProps) => {
+  const intl = useIntl();
+  const translateDate = (id: string, date: string) => intl.formatMessage({ id: id }, { date: dateFormatter(date) });
+  return (
+    <li key={key}>
+      <a href={utkast.link}>
+        <span className={styles.editSvg}>
+          <Edit aria-hidden={"true"} />
+        </span>
+        <span className={styles.listContentSpan}>
+          <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
+            {utkast.tittel}
+          </Heading>
+          <BodyLong size={"small"}>{translateDate("utkast.started", utkast.opprettet)}</BodyLong>
+        </span>
+        <Next className={styles.nextIcon} aria-hidden={"true"} />
+      </a>
+    </li>
+  );
 };
 
 export default UtkastList;

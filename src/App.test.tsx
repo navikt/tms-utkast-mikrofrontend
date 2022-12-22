@@ -8,7 +8,6 @@ import { rest } from "msw";
 import { digisosApiUrl, utkastApiUrl } from "./api/urls";
 import { setupServer } from "msw/node";
 import { UtkastElement } from "./components/Utkast";
-import utkastList from "./components/UtkastList/UtkastList";
 
 describe("Rendrer app", () => {
   const digisosReponse = [
@@ -32,17 +31,17 @@ describe("Rendrer app", () => {
   });
 
   it("viser utkastliste med resultat fra digisos og tms", async () => {
-    await setupMockResponse({ status: 200, content: utkastTestList }, { status: 200, content: digisosReponse });
-    const component = renderAppComponent();
-    expect(await axe(component.container)).toHaveNoViolations();
+    setupMockResponse({ status: 200, content: utkastTestList }, { status: 200, content: digisosReponse });
+    const { container } = renderAppComponent();
+    expect(await axe(container)).toHaveNoViolations();
     expect(screen.getByText("Utkast")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(4);
   });
 
   it("viser utkastliste med resultat fra digisos", async () => {
-    await setupMockResponse({ status: 500, content: null }, { status: 200, content: digisosReponse });
-    const component = renderAppComponent();
-    expect(await axe(component.container)).toHaveNoViolations();
+    setupMockResponse({ status: 500, content: null }, { status: 200, content: digisosReponse });
+    const { container } = renderAppComponent();
+    expect(await axe(container)).toHaveNoViolations();
     expect(screen.getByText("Utkast")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(1);
   });
@@ -55,20 +54,20 @@ describe("Rendrer app", () => {
         content: null,
       }
     );
-    const component = renderAppComponent();
-    expect(await axe(component.container)).toHaveNoViolations();
+    const { container } = renderAppComponent();
+    expect(await axe(container)).toHaveNoViolations();
     expect(screen.getByText("Utkast")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(2);
   });
 
   it("viser feil-beskjed", async () => {
     setupMockResponse({ status: 500, content: null }, { status: 500, content: null });
-    const component = renderAppComponent();
-    expect(await axe(component.container)).toHaveNoViolations();
+    const { container } = renderAppComponent();
+    expect(await axe(container)).toHaveNoViolations();
     expect(screen.getByTestId("errordiv")).toBeDefined();
   });
 
-  const setupMockResponse = async (utkastApiResponse: mockProps, digisosApiResponse: mockProps) => {
+  const setupMockResponse = (utkastApiResponse: mockProps, digisosApiResponse: mockProps) => {
     const restHandlers = [
       rest.get(utkastApiUrl, (req, res, ctx) => {
         return res(ctx.status(utkastApiResponse.status), ctx.json(utkastApiResponse.content));
@@ -77,7 +76,7 @@ describe("Rendrer app", () => {
         return res(ctx.status(digisosApiResponse.status), ctx.json(digisosApiResponse.content));
       }),
     ];
-    await server.resetHandlers(...restHandlers);
+    server.resetHandlers(...restHandlers);
   };
 });
 
@@ -99,8 +98,7 @@ function renderAppComponent() {
     withLanguageProvider(
       <QueryClientProvider client={client}>
         <App />
-      </QueryClientProvider>,
-      "nb"
+      </QueryClientProvider>
     )
   );
 }
