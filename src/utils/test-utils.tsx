@@ -1,6 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import LanguageProvider from "../providers/LanguageProvider";
+import { UtkastElement } from "../components/Utkast";
 
 const customRender = (ui: any, options = {}) =>
   render(ui, {
@@ -18,7 +19,7 @@ export function withLanguageProvider(reactelement: JSX.Element, lang: string) {
   return <LanguageProvider defaultLang={lang}>{reactelement}</LanguageProvider>;
 }
 
-export const utkastTestList = [
+export const utkastTestList: UtkastElement[] = [
   {
     tittel: "Utkast 1",
     link: "https://test.no",
