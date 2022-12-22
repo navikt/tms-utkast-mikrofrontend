@@ -30,9 +30,9 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
     );
 };
 
-export const UtkastListElement = ({ utkast, key }: UtkastListElementProps) => {
+export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
   return (
-    <li key={key}>
+    <li key={utkast.utkastId}>
       <a href={utkast.link}>
         <span className={styles.editSvg}>
           <Edit aria-hidden={"true"} />
