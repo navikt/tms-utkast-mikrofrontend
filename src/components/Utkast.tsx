@@ -3,7 +3,7 @@ import { BodyShort, Heading, Ingress, Loader } from "@navikt/ds-react";
 import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
-import { useIntl } from "react-intl";
+import { translate } from "../providers/LanguageProvider";
 
 export interface UtkastProps {
   loading: boolean;
@@ -19,8 +19,6 @@ export interface UtkastElement {
 }
 
 const Utkast = ({ utkast, loading }: UtkastProps) => {
-  const intl = useIntl();
-  const translate = (id: string) => intl.formatMessage({ id: id });
   return (
     <div className={styles.utkastWrapper}>
       <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
