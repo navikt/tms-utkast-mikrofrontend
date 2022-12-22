@@ -17,3 +17,27 @@ export { customRender as render };
 export function withLanguageProvider(reactelement: JSX.Element, lang: string) {
   return <LanguageProvider defaultLang={lang}>{reactelement}</LanguageProvider>;
 }
+
+export const utkastTestList = [
+  {
+    tittel: "Utkast 1",
+    link: "https://test.no",
+    utkastId: "hhjjjkkk",
+    opprettet: "2022-12-19T08:53:24.636Z",
+    sistEndret: "2022-12-19T08:53:24.636Z",
+  },
+  {
+    tittel: "Utkast 2",
+    link: "https://test.no",
+    utkastId: "llhhhh",
+    opprettet: "2022-12-19T08:53:24.636Z",
+    sistEndret: "2022-12-19T08:53:24.636Z",
+  },
+  {
+    tittel: "Utkast 3",
+    link: "https://test.no",
+    utkastId: "ajslfjla",
+    opprettet: "2022-12-19T08:53:24.636Z",
+    sistEndret: "2022-12-19T08:53:24.636Z",
+  },
+];

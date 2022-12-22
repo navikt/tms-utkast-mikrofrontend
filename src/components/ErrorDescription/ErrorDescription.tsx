@@ -9,7 +9,7 @@ const ErrorDescription = () => {
   const translate = (id: string) => useIntl().formatMessage({ id: id });
 
   return (
-    <div className={styles.errorDiv}>
+    <div className={styles.errorDiv} data-testid="errordiv">
       <Heading size={"xlarge"}>{translate("error.heading")}</Heading>
       <img src={kattIBoks} alt={translate("error.kitten")} />
       <BodyLong>
