@@ -18,16 +18,17 @@ interface UtkastListElementProps {
 }
 
 const UtkastList = ({ utkast }: UtkastListProps) => {
-  if (utkast != undefined && utkast.length == 0) {
-    return <EmptyUtkastList />;
-  } else
-    return (
-      <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
-        {utkast?.map((u) => (
-          <UtkastListElement utkast={u} key={u.utkastId} />
-        ))}
-      </ul>
-    );
+  const listIsEmpty = utkast != undefined && utkast.length == 0;
+
+  return listIsEmpty ? (
+    <EmptyUtkastList />
+  ) : (
+    <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
+      {utkast?.map((u) => (
+        <UtkastListElement utkast={u} key={u.utkastId} />
+      ))}
+    </ul>
+  );
 };
 
 export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
