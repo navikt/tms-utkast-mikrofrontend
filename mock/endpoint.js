@@ -8,7 +8,7 @@ export default [
           utkastId: "12467899999",
           tittel: "Søknad om dagpenger, permittert",
           link: "https://www.dev.nav.no/minside/",
-          opprettet: "2020-03-13T08:53:24.636Z",
+          opprettet: "2020-03-23T08:53:24.636Z",
           sistEndret: null,
         },
         {
@@ -45,15 +45,15 @@ export default [
           utkastId: "124679",
           tittel: "Søknad om dagpenger, permittert",
           link: "https://www.dev.nav.no/minside/",
-          opprettet: "2020-03-13T08:53:24.636Z",
+          opprettet: "2020-10-13T08:53:24.636Z",
           sistEndret: null,
         },
         {
           utkastId: "124610",
           tittel: "Søknad om foreldre- og svangerskapspenger",
           link: "https://www.dev.nav.no/minside/",
-          opprettet: "2020-03-13T08:53:24.636Z",
-          sistEndret: "2020-03-14T08:53:24.636Z",
+          opprettet: "2023-03-13T08:53:24.636Z",
+          sistEndret: "2023-03-14T08:53:24.636Z",
         },
       ];
     },

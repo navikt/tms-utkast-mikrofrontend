@@ -76,10 +76,10 @@ describe("Rendrer app", () => {
     expect(await axe(container)).toHaveNoViolations();
     const listitems = await screen.getAllByRole("listitem");
     expect(listitems.length).toBe(4);
-    expect(listitems[0].textContent?.charAt(0)).toBe("1");
-    expect(listitems[1].textContent?.charAt(0)).toBe("2");
-    expect(listitems[2].textContent?.charAt(0)).toBe("3");
-    expect(listitems[3].textContent?.charAt(0)).toBe("4");
+    expect(listitems[0].textContent?.charAt(0)).toBe("4");
+    expect(listitems[1].textContent?.charAt(0)).toBe("3");
+    expect(listitems[2].textContent?.charAt(0)).toBe("2");
+    expect(listitems[3].textContent?.charAt(0)).toBe("1");
   });
 
   it("viser utkastliste med resultat fra digisos", async () => {
