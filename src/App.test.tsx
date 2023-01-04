@@ -38,6 +38,50 @@ describe("Rendrer app", () => {
     expect(screen.getAllByRole("listitem").length).toBe(4);
   });
 
+  it("sorterer utkast på pågebynt dato", async () => {
+    const tmsutkast = [
+      {
+        tittel: "1",
+        link: "https://test.no",
+        utkastId: "hhjjjkkk",
+        opprettet: "2022-12-19T08:53:24.636Z",
+        sistEndret: "2022-12-19T08:53:24.636Z",
+      },
+      {
+        tittel: "4",
+        link: "https://test.no",
+        utkastId: "llhhhh",
+        opprettet: "2023-01-04T08:53:24.636Z",
+        sistEndret: "2023-01-04T08:53:24.636Z",
+      },
+    ];
+    const digisosutkast = [
+      {
+        tittel: "3",
+        link: "https://test.no",
+        utkastId: "hhjjjkkk",
+        opprettet: "2022-12-26T08:53:24.636Z",
+        sistEndret: "2022-12-26T08:53:24.636Z",
+      },
+      {
+        tittel: "2",
+        link: "https://test.no",
+        utkastId: "llhhhh",
+        opprettet: "2022-12-23T08:53:24.636Z",
+        sistEndret: "2022-12-23T08:53:24.636Z",
+      },
+    ];
+    setupMockResponse({ status: 200, content: tmsutkast }, { status: 200, content: digisosutkast });
+    const { container } = renderAppComponent();
+    expect(await axe(container)).toHaveNoViolations();
+    const listitems = await screen.getAllByRole("listitem");
+    expect(listitems.length).toBe(4);
+    expect(listitems[0].textContent?.charAt(0)).toBe("1");
+    expect(listitems[1].textContent?.charAt(0)).toBe("2");
+    expect(listitems[2].textContent?.charAt(0)).toBe("3");
+    expect(listitems[3].textContent?.charAt(0)).toBe("4");
+  });
+
   it("viser utkastliste med resultat fra digisos", async () => {
     setupMockResponse({ status: 500, content: null }, { status: 200, content: digisosReponse });
     const { container } = renderAppComponent();

@@ -7,6 +7,7 @@ import styles from "./UtkastList.module.css";
 import globalStyles from "../../App.module.css";
 import { Edit } from "@navikt/ds-icons";
 import { translateWithDate } from "../../providers/LanguageProvider";
+import { sortByOpprettet } from "../../utils/sorting";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
@@ -24,7 +25,7 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
     <EmptyUtkastList />
   ) : (
     <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
-      {utkast?.map((u) => (
+      {utkast?.sort(sortByOpprettet).map((u) => (
         <UtkastListElement utkast={u} key={u.utkastId} />
       ))}
     </ul>
