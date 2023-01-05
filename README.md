@@ -1,25 +1,19 @@
-# tms-utkast-mikrofrontend-vitets
+# tms-utkast-mikrofrontend
 
-Kan brukes som utgangspunkt for å opprette nye mikrofrontends i Min Side.
+Helside-mikroforentend for underside med utkast <br>
 
-# Features
-
-- vite-plugin-mock
-- vitest
-- precommit linting med a11y og react
-
-# Tilpass repo-et
-
-1. Søk etter og erstatt tms-utkast-mikrofrontend med det som skal være navnet på den nye appen.
-2. Kommenter inn upload-dev og upload-prod i workflowen.
-
-Mikfrontenden blir lastet opp til nav sin CDN ved push til main.
+url i prod: `https://www.nav.no/minside/utkast` <br>
+url i dev: `https://www.dev.nav.no/minside/utkast`
 
 # Kom i gang
 
 1. Bygg tms-utkast-mikrofrontend ved å kjøre npm run build
 2. Start appen lokalt ved å kjøre npm run dev
 3. Appen nås på http://localhost:3000
+
+# Testing
+
+`npm run test`
 
 # Henvendelser
 

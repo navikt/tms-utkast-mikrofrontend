@@ -57,5 +57,6 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
     deps: {
       inline: ["@testing-library/user-event"],
     },
+    setupFiles: ["vitest-setup.ts"],
   },
 });
