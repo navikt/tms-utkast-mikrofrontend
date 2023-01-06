@@ -15,6 +15,8 @@
     "@navikt/ds-icons": "^2.0.0",
     "@navikt/ds-react": "1.4.4",
     "@navikt/ds-tokens": "^2.0.5",
+    "@types/amplitude-js": "^8.16.2",
+    "amplitude-js": "^8.21.3",
     "dayjs": "^1.11.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -43,8 +45,8 @@
     "rollup-plugin-import-map": "2.2.2",
     "typescript": "4.7.2",
     "vite": "2.9.13",
-    "vite-plugin-css-injected-by-js": "1.4.0",
     "vite-plugin-compression": "0.5.1",
+    "vite-plugin-css-injected-by-js": "1.4.0",
     "vite-plugin-mock": "2.9.6",
     "vitest": "0.13.1"
   },

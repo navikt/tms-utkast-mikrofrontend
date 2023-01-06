@@ -8,6 +8,7 @@ import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
 import styles from "./UtkastList.module.css";
 import glocalStyles from "../../App.module.css";
 import { Edit } from "@navikt/ds-icons";
+import { logAmplitudeEvent } from "../../utils/amplitude";
 
 const dateFormatter = (date: string) => {
   return dayjs(date).format("DD.MM.YYYY");
@@ -23,7 +24,7 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
       <ul className={`${styles.utkastList} ${glocalStyles.tekstinnhold}`}>
         {utkast?.map((u) => (
           <li key={u.utkastId}>
-            <a href={u.link}>
+            <a href={u.link} onClick={() => logAmplitudeEvent(u.link)}>
               <span className={styles.editSvg}>
                 <Edit aria-hidden={"true"} />
               </span>
