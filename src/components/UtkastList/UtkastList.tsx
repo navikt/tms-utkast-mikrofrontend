@@ -8,6 +8,7 @@ import globalStyles from "../../App.module.css";
 import { Edit } from "@navikt/ds-icons";
 import { translateWithDate } from "../../providers/LanguageProvider";
 import { sortByOpprettet } from "../../utils/sorting";
+import { logAmplitudeEvent } from "../../utils/amplitude";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
@@ -35,7 +36,7 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
 export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
   return (
     <li key={utkast.utkastId}>
-      <a href={utkast.link}>
+      <a href={utkast.link} onClick={() => logAmplitudeEvent(utkast.link)}>
         <span className={styles.editSvg}>
           <Edit aria-hidden={"true"} />
         </span>
