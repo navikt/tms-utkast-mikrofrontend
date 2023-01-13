@@ -13,10 +13,16 @@ export const getEnvironment = () => {
 
 type EnvUrl = { development: string; production: string; local: string };
 
-const API_URL: EnvUrl = {
+const UTKAST_API_URL: EnvUrl = {
   local: "http://localhost:3000/api/endpoint/utkast",
   development: "https://www.dev.nav.no/tms-min-side-proxy/utkast/utkast",
   production: "https://www.nav.no/tms-min-side-proxy/utkast/utkast",
+};
+
+const DIGIGSOS_API_URL: EnvUrl = {
+  local: "http://localhost:3000/api/endpoint/dittnav-api/digisos/utkast",
+  development: "https://www.dev.nav.no/dittnav-api/digisos/utkast",
+  production: "https://www.nav.no/dittnav-api/digisos/utkast",
 };
 
 const BASE_URL: EnvUrl = {
@@ -24,5 +30,6 @@ const BASE_URL: EnvUrl = {
   development: "https://www.dev.nav.no/minside/",
   production: "https://www.nav.no/minside/",
 };
-export const apiUrl = API_URL[getEnvironment()];
+export const utkastApiUrl = UTKAST_API_URL[getEnvironment()];
+export const digisosApiUrl = DIGIGSOS_API_URL[getEnvironment()];
 export const baseUrl = BASE_URL[getEnvironment()];
