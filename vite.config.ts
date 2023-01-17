@@ -42,7 +42,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
     manifest: true,
     rollupOptions: {
       input: {
-        "tms-utkast-mikrofrontend": resolve(__dirname, "src/Mikrofrontend.jsx"),
+        "tms-utkast-mikrofrontend": resolve(__dirname, "src/Mikrofrontend.tsx"),
       },
       preserveEntrySignatures: "exports-only",
       output: {
