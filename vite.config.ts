@@ -39,11 +39,16 @@ export default ({ command }: ConfigEnv): UserConfigExport => ({
     },
   ],
   build: {
-    lib: {
-      entry: resolve(__dirname, "src/Mikrofrontend.tsx"),
-      name: "tms-utkast-mikrofrontend",
-      formats: ["es"],
-      fileName: () => `tms-utkast-mikrofrontend.js`,
+    manifest: true,
+    rollupOptions: {
+      input: {
+        "tms-utkast-mikrofrontend": resolve(__dirname, "src/Mikrofrontend.tsx"),
+      },
+      preserveEntrySignatures: "exports-only",
+      output: {
+        entryFileNames: "[name].js",
+        format: "esm",
+      },
     },
   },
   css: {
