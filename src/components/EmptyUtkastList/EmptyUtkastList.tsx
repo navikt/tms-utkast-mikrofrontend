@@ -1,5 +1,5 @@
-import { BodyShort, Heading } from "@navikt/ds-react";
-import tomtKatt from "../../img/tomt-katt.svg";
+import { BodyShort } from "@navikt/ds-react";
+import TomtKatt from "../../img/TomtKatt";
 import style from "./EmptyUtkastList.module.css";
 import globalStyles from "../../App.module.css";
 import { translate } from "../../providers/LanguageProvider";
@@ -7,7 +7,7 @@ import { translate } from "../../providers/LanguageProvider";
 const EmptyUtkastList = () => {
   return (
     <div className={`${style.ingenUtkast} ${globalStyles.tekstinnhold}`}>
-      <img src={tomtKatt} alt={translate("utkast.empty.kitten")} />
+      <TomtKatt alt={translate("utkast.empty.kitten")} />
       <div className={style.ingenUtkastTekst}>
         <BodyShort>
           <strong>{translate("utkast.empty.subheading")}</strong>
