@@ -1,5 +1,5 @@
 import React from "react";
-import { BodyShort, Heading, Ingress, Loader } from "@navikt/ds-react";
+import { Heading, Ingress, Loader } from "@navikt/ds-react";
 import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
@@ -16,6 +16,12 @@ export interface UtkastElement {
   utkastId: string;
   opprettet: string;
   sistEndret: string;
+  metrics?: MetricValues | null;
+}
+
+export interface MetricValues {
+  skjemakode: string;
+  skjemanavn: string;
 }
 
 const Utkast = ({ utkast, loading }: UtkastProps) => {
