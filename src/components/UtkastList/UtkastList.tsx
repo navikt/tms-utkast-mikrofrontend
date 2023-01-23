@@ -36,7 +36,7 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
 export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
   return (
     <li key={utkast.utkastId}>
-      <a href={utkast.link} onClick={() => logAmplitudeEvent(utkast.link)}>
+      <a href={utkast.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
         <span className={styles.editSvg}>
           <Edit aria-hidden={"true"} />
         </span>

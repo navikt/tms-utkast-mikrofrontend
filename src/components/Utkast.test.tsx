@@ -18,7 +18,7 @@ describe("Utkast", () => {
     const { container } = render(withLanguageProvider(<Utkast loading={false} utkast={[]} />));
     expect(await axe(container)).toHaveNoViolations();
 
-    expect(screen.getByAltText("En svart katt som gjemmer seg bak ett papirark"));
+    expect(screen.getByTitle("En svart katt som gjemmer seg bak ett papirark"));
   });
 
   it("translates page to english", async () => {
