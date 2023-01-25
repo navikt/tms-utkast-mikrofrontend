@@ -27,18 +27,22 @@ export interface MetricValues {
 const Utkast = ({ utkast, loading }: UtkastProps) => {
   return (
     <div className={styles.utkastWrapper}>
-      <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
-        <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
-        <Ingress>{translate("utkast.description")}</Ingress>
+      <div className={styles.headerWrapper}>
+        <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
+          <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
+          <Ingress>{translate("utkast.description")}</Ingress>
+        </div>
       </div>
-      <div className={styles.utkastContainer}>
-        {loading ? (
-          <div className={styles.loadingDiv}>
-            <Loader id="loader" size="3xlarge" title="venter..." />
-          </div>
-        ) : (
-          <UtkastList utkast={utkast} />
-        )}
+      <div className={styles.contentWrapper}>
+        <div className={styles.utkastContainer}>
+          {loading ? (
+            <div className={styles.loadingDiv}>
+              <Loader id="loader" size="3xlarge" title="venter..." />
+            </div>
+          ) : (
+            <UtkastList utkast={utkast} />
+          )}
+        </div>
       </div>
     </div>
   );

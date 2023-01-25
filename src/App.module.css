@@ -12,16 +12,6 @@ main {
 }
 
 .tekstinnhold {
-  max-width: 600px;
-}
-
-@media (min-width: 800px) {
-  .tekstinnhold {
-    margin-left: 15%;
-  }
-}
-@media (max-width: 800px) {
-  .tekstinnhold {
-    margin-left: 1%;
-  }
+  max-width: 912px;
+  margin: 0 auto;
 }
