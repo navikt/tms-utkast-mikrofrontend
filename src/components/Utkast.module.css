@@ -7,6 +7,15 @@
 .utkast {
   color: var(--a-text-subtle);
   padding: 16px;
+  max-width: 600px;
+}
+
+.headerWrapper {
+  background-color: var(--a-bg-default);
+}
+
+.contentWrapper {
+  background-color: var(--a-surface-danger-subtle);
 }
 
 .loadingDiv {
@@ -20,7 +29,8 @@
 }
 
 .utkastContainer {
-  padding: 0 16px 16px 16px;
-  background-color: var(--a-surface-danger-subtle);
+  padding: 0;
   min-height: 600px;
+  max-width: 912px;
+  margin: 0 auto;
 }

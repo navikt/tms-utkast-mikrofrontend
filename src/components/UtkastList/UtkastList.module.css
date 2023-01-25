@@ -10,8 +10,13 @@
 }
 
 .utkastList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   list-style: none;
-  padding: 16px 16px 16px 0;
+  padding: 16px 0;
+  max-width: 600px;
+  margin: 0;
 }
 
 .utkastList li {
@@ -24,12 +29,6 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
-}
-
-@media (max-width: 360px) {
-  .utkastList li {
-    word-break: break-all;
-  }
 }
 
 .utkastList li a {
