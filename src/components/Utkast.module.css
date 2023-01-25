@@ -6,7 +6,7 @@
 }
 .utkast {
   color: var(--a-text-subtle);
-  padding: 16px;
+  padding: 16px 0;
   max-width: 600px;
 }
 
