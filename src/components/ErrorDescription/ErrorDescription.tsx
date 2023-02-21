@@ -3,18 +3,18 @@ import styles from "./ErrorDescription.module.css";
 import { baseUrl } from "../../api/urls";
 import KattIBoks from "../../img/KattIBoks";
 import { BodyLong, Heading } from "@navikt/ds-react";
-import { translate } from "../../providers/LanguageProvider";
+import { text } from "../../language/text";
 
 const ErrorDescription = () => {
   return (
     <div className={styles.errorDiv} data-testid="errordiv">
-      <Heading size={"xlarge"}>{translate("error.heading")}</Heading>
-      <KattIBoks alt={translate("error.kitten")} />
+      <Heading size={"xlarge"}>{text.errorHeading["nb"]}</Heading>
+      <KattIBoks alt={text.errorKitten["nb"]} />
       <BodyLong>
-        <strong>{translate("error.text")}</strong>
+        <strong>{text.errorText["nb"]}</strong>
       </BodyLong>
       <BodyLong>
-        {translate("error.help")} <a href={baseUrl}>{translate("min.side")}</a>
+        {text.errorHelp["nb"]} <a href={baseUrl}>{text.minSide["nb"]}</a>
       </BodyLong>
     </div>
   );

@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import LanguageProvider from "../providers/LanguageProvider";
 import { UtkastElement } from "../components/Utkast";
 
 const customRender = (ui: any, options = {}) =>
@@ -14,10 +13,6 @@ export * from "@testing-library/react";
 
 // override render export
 export { customRender as render };
-
-export function withLanguageProvider(reactelement: JSX.Element, lang: string | null = null) {
-  return <LanguageProvider defaultLang={lang || "nb"}>{reactelement}</LanguageProvider>;
-}
 
 export const utkastTestList: UtkastElement[] = [
   {

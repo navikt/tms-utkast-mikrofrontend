@@ -1,5 +1,5 @@
 import { describe, expect, it, beforeAll, afterAll, afterEach } from "vitest";
-import { render, withLanguageProvider, screen, utkastTestList } from "./utils/test-utils";
+import { render, screen, utkastTestList } from "./utils/test-utils";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
@@ -139,10 +139,8 @@ function renderAppComponent() {
   });
 
   return render(
-    withLanguageProvider(
-      <QueryClientProvider client={client}>
-        <App />
-      </QueryClientProvider>
-    )
+    <QueryClientProvider client={client}>
+      <App />
+    </QueryClientProvider>
   );
 }

@@ -2,17 +2,17 @@ import { BodyShort } from "@navikt/ds-react";
 import TomtKatt from "../../img/TomtKatt";
 import style from "./EmptyUtkastList.module.css";
 import globalStyles from "../../App.module.css";
-import { translate } from "../../providers/LanguageProvider";
+import { text } from "../../language/text";
 
 const EmptyUtkastList = () => {
   return (
     <div className={`${style.ingenUtkast} ${globalStyles.tekstinnhold}`}>
-      <TomtKatt alt={translate("utkast.empty.kitten")} />
+      <TomtKatt alt={text.emptyKitten["nb"]} />
       <div className={style.ingenUtkastTekst}>
         <BodyShort>
-          <strong>{translate("utkast.empty.subheading")}</strong>
+          <strong>{text.emptySubheading["nb"]}</strong>
         </BodyShort>
-        <a href={"https://www.nav.no/tjenester"}> {translate("utkast.empty.otherServices")}</a>
+        <a href={"https://www.nav.no/tjenester"}> {text.emptyOtherServices["nb"]}</a>
       </div>
     </div>
   );

@@ -6,9 +6,10 @@ import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
 import styles from "./UtkastList.module.css";
 import globalStyles from "../../App.module.css";
 import { Edit } from "@navikt/ds-icons";
-import { translateWithDate } from "../../providers/LanguageProvider";
 import { sortByOpprettet } from "../../utils/sorting";
 import { logAmplitudeEvent } from "../../utils/amplitude";
+import { text } from "../../language/text";
+import dayjs from "dayjs";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
@@ -34,6 +35,8 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
 };
 
 export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
+  const dateFormatter = (date: string) => dayjs(date).format("DD.MM.YYYY");
+
   return (
     <li key={utkast.utkastId}>
       <a href={utkast.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
@@ -44,7 +47,9 @@ export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
           <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
             {utkast.tittel}
           </Heading>
-          <BodyLong size={"small"}>{translateWithDate("utkast.started", utkast.opprettet)}</BodyLong>
+          <BodyLong size={"small"}>
+            {text.started["nb"]} {dateFormatter(utkast.opprettet)}
+          </BodyLong>
         </span>
         <Next className={styles.nextIcon} aria-hidden={"true"} />
       </a>
