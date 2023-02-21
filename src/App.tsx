@@ -1,10 +1,10 @@
 import { useQuery } from "react-query";
 import { fetcher } from "./api/api";
 import { digisosApiUrl, utkastApiUrl } from "./api/urls";
-import Utkast, { UtkastElement } from "./components/Utkast";
+import Utkast from "./components/Utkast";
+import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 import "@navikt/ds-css";
 import style from "./App.module.css";
-import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 
 function App() {
   const { status: utkastApiStatus, data: utkastApiData = [] } = useQuery(utkastApiUrl, fetcher);

@@ -3,7 +3,7 @@ import { Heading, Ingress, Loader } from "@navikt/ds-react";
 import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
-import { translate } from "../providers/LanguageProvider";
+import { text } from "../language/text";
 
 export interface UtkastProps {
   loading: boolean;
@@ -29,8 +29,8 @@ const Utkast = ({ utkast, loading }: UtkastProps) => {
     <div className={styles.utkastWrapper}>
       <div className={styles.headerWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
-          <Heading size={"large"}> {translate("utkast.hovedoverskrift")} </Heading>
-          <Ingress>{translate("utkast.description")}</Ingress>
+          <Heading size={"large"}> {text.hovedoverskrift["nb"]} </Heading>
+          <Ingress>{text.description["nb"]}</Ingress>
         </div>
       </div>
       <div className={styles.contentWrapper}>
