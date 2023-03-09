@@ -16,7 +16,7 @@ const reactRouterDomUrl = "https://www.nav.no/tms-min-side-assets/react-router-d
 const imports = {
   react: reactUrl,
   "react-dom": reactDomUrl,
-  reactRouterDomUrl,
+  "react-router-dom": reactRouterDomUrl,
 };
 
 export default ({ command }: ConfigEnv): UserConfigExport => ({
