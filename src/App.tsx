@@ -18,9 +18,7 @@ function App() {
 
   return (
     <main className={style.main}>
-      <Link to="..." relative="path">
-        Test Link
-      </Link>
+      <Link to="/">Test Link</Link>
       <div className={style.app}>
         {showErrorMessage ? <ErrorDescription /> : <Utkast utkast={utkastlist} loading={loading} />}
       </div>
