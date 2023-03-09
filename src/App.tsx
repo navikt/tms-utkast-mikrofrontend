@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
+import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler";
 import { fetcher } from "./api/api";
 import { digisosApiUrl, utkastApiUrl } from "./api/urls";
-import { Link } from "react-router-dom";
 import Utkast from "./components/Utkast";
 import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 import "@navikt/ds-css";
@@ -16,9 +16,12 @@ function App() {
 
   const utkastlist = digisosApiData.concat(utkastApiData);
 
+  onLanguageSelect((language) => {
+    console.log(language.locale);
+  });
+
   return (
     <main className={style.main}>
-      <Link to="/">Test Link</Link>
       <div className={style.app}>
         {showErrorMessage ? <ErrorDescription /> : <Utkast utkast={utkastlist} loading={loading} />}
       </div>
