@@ -5,6 +5,7 @@ import Utkast from "./components/Utkast";
 import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 import "@navikt/ds-css";
 import style from "./App.module.css";
+import { Link } from "react-router-dom";
 
 function App() {
   const { status: utkastApiStatus, data: utkastApiData = [] } = useQuery(utkastApiUrl, fetcher);
@@ -17,6 +18,9 @@ function App() {
 
   return (
     <main className={style.main}>
+      <Link to="..." relative="path">
+        Test Link
+      </Link>
       <div className={style.app}>
         {showErrorMessage ? <ErrorDescription /> : <Utkast utkast={utkastlist} loading={loading} />}
       </div>

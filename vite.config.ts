@@ -11,10 +11,12 @@ import { resolve } from "path";
 
 const reactUrl = "https://www.nav.no/tms-min-side-assets/react/18/esm/index.js";
 const reactDomUrl = "https://www.nav.no/tms-min-side-assets/react-dom/18/esm/index.js";
+const reactRouterDomUrl = "https://www.nav.no/tms-min-side-assets/react-router-dom/6/esm/index.js";
 
 const imports = {
   react: reactUrl,
   "react-dom": reactDomUrl,
+  reactRouterDomUrl,
 };
 
 export default ({ command }: ConfigEnv): UserConfigExport => ({
