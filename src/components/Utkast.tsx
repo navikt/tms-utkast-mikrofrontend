@@ -7,6 +7,7 @@ import { text } from "../language/text";
 
 export interface UtkastProps {
   loading: boolean;
+  language: "en" | "nb";
   utkast: UtkastElement[] | undefined;
 }
 
@@ -24,13 +25,13 @@ export interface MetricValues {
   skjemanavn: string;
 }
 
-const Utkast = ({ utkast, loading }: UtkastProps) => {
+const Utkast = ({ utkast, loading, language }: UtkastProps) => {
   return (
     <div className={styles.utkastWrapper}>
       <div className={styles.headerWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
-          <Heading size={"large"}> {text.hovedoverskrift["nb"]} </Heading>
-          <Ingress>{text.description["nb"]}</Ingress>
+          <Heading size={"large"}> {text.hovedoverskrift[language]} </Heading>
+          <Ingress>{text.description[language]}</Ingress>
         </div>
       </div>
       <div className={styles.contentWrapper}>
@@ -40,7 +41,7 @@ const Utkast = ({ utkast, loading }: UtkastProps) => {
               <Loader id="loader" size="3xlarge" title="venter..." />
             </div>
           ) : (
-            <UtkastList utkast={utkast} />
+            <UtkastList utkast={utkast} language={language} />
           )}
         </div>
       </div>

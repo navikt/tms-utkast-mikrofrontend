@@ -13,14 +13,16 @@ import dayjs from "dayjs";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
+  language: "en" | "nb";
 }
 
 interface UtkastListElementProps {
   utkast: UtkastElement;
   key: string;
+  language: "en" | "nb";
 }
 
-const UtkastList = ({ utkast }: UtkastListProps) => {
+const UtkastList = ({ utkast, language }: UtkastListProps) => {
   const listIsEmpty = utkast != undefined && utkast.length == 0;
 
   return listIsEmpty ? (
@@ -28,13 +30,13 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
   ) : (
     <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
       {utkast?.sort(sortByOpprettet).map((u) => (
-        <UtkastListElement utkast={u} key={u.utkastId} />
+        <UtkastListElement language={language} utkast={u} key={u.utkastId} />
       ))}
     </ul>
   );
 };
 
-export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
+export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) => {
   const dateFormatter = (date: string) => dayjs(date).format("DD.MM.YYYY");
 
   return (
@@ -48,7 +50,7 @@ export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
             {utkast.tittel}
           </Heading>
           <BodyLong size={"small"}>
-            {text.started["nb"]} {dateFormatter(utkast.opprettet)}
+            {text.started[language]} {dateFormatter(utkast.opprettet)}
           </BodyLong>
         </span>
         <Next className={styles.nextIcon} aria-hidden={"true"} />
