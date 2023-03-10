@@ -26,7 +26,7 @@ const UtkastList = ({ utkast, language }: UtkastListProps) => {
   const listIsEmpty = utkast != undefined && utkast.length == 0;
 
   return listIsEmpty ? (
-    <EmptyUtkastList />
+    <EmptyUtkastList language={language} />
   ) : (
     <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
       {utkast?.sort(sortByOpprettet).map((u) => (
