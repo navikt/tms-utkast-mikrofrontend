@@ -6,7 +6,7 @@ import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 import "@navikt/ds-css";
 import style from "./App.module.css";
 
-function App({ language }: { language: "en" | "nb" }) {
+function App({ language = "nb" }: { language: "en" | "nb" }) {
   const { status: utkastApiStatus, data: utkastApiData = [] } = useQuery(utkastApiUrl, fetcher);
   const { status: digisosApiStatus, data: digisosApiData = [] } = useQuery(digisosApiUrl, fetcher);
 

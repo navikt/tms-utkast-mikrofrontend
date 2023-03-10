@@ -140,7 +140,7 @@ function renderAppComponent() {
 
   return render(
     <QueryClientProvider client={client}>
-      <App />
+      <App language="nb" />
     </QueryClientProvider>
   );
 }

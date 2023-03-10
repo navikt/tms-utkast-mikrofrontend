@@ -7,7 +7,7 @@ import { UtkastListElement } from "./UtkastList/UtkastList";
 
 describe("Utkast", () => {
   it("renders list", async () => {
-    const { container } = render(<Utkast loading={false} utkast={utkastTestList} />);
+    const { container } = render(<Utkast language={"nb"} loading={false} utkast={utkastTestList} />);
     expect(await axe(container)).toHaveNoViolations();
     expect(screen.getByText(utkastTestList[0].tittel)).toBeDefined();
     expect(screen.getByText(utkastTestList[1].tittel)).toBeDefined();
@@ -15,7 +15,7 @@ describe("Utkast", () => {
   });
 
   it("renders text for empty lists", async () => {
-    const { container } = render(<Utkast loading={false} utkast={[]} />);
+    const { container } = render(<Utkast language={"nb"} loading={false} utkast={[]} />);
     expect(await axe(container)).toHaveNoViolations();
 
     expect(screen.getByTitle("En svart katt som gjemmer seg bak ett papirark"));
@@ -41,7 +41,7 @@ describe("UtkastListElement", () => {
       tittel: "Søknadsutkast",
       utkastId: "",
     };
-    render(<UtkastListElement utkast={utkast} key={utkast.utkastId} />);
+    render(<UtkastListElement language={"nb"} utkast={utkast} key={utkast.utkastId} />);
     expect(screen.getByText("Påbegynt 22.12.2022")).toBeDefined();
     expect(screen.getByText("Søknadsutkast")).toBeDefined();
     expect(screen.getByRole("link").getAttribute("href")).toBe(utkast.link);
