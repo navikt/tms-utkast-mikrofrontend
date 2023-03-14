@@ -5,12 +5,12 @@ export type Language = "nb" | "en";
 export const LanguageContext = createContext((localStorage.getItem("language") ?? "nb") as Language);
 
 const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>((localStorage.getItem("language") ?? "nb") as Language);
+  const [language, setLanguage] = useState<Language>((sessionStorage.getItem("language") ?? "nb") as Language);
 
   useEffect(() => {
     console.log("render -");
     window.addEventListener("storage", () => {
-      setLanguage((localStorage.getItem("language") ?? "nb") as Language);
+      setLanguage((sessionStorage.getItem("language") ?? "nb") as Language);
     });
   }, [language]);
 
