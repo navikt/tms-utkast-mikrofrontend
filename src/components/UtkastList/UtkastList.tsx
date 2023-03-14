@@ -27,7 +27,7 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
   const language = useContext(LanguageContext);
 
   return listIsEmpty ? (
-    <EmptyUtkastList language={language} />
+    <EmptyUtkastList />
   ) : (
     <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
       {utkast?.sort(sortByOpprettet).map((u) => (
