@@ -2,10 +2,11 @@ import React, { useState, useEffect, createContext } from "react";
 
 export type Language = "nb" | "en";
 
-export const LanguageContext = createContext((localStorage.getItem("language") ?? "nb") as Language);
+const defualtLanguage = (sessionStorage.getItem("language") ?? "nb") as Language;
+export const LanguageContext = createContext(defualtLanguage);
 
 const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>((sessionStorage.getItem("language") ?? "nb") as Language);
+  const [language, setLanguage] = useState(defualtLanguage);
 
   useEffect(() => {
     console.log("render -");
