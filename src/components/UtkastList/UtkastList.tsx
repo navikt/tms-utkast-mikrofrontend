@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import { Next } from "@navikt/ds-icons";
 import { UtkastElement } from "../Utkast";
@@ -10,20 +10,21 @@ import { sortByOpprettet } from "../../utils/sorting";
 import { logAmplitudeEvent } from "../../utils/amplitude";
 import { text } from "../../language/text";
 import dayjs from "dayjs";
+import { LanguageContext, Language } from "../../provider/LanguageProvider";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
-  language: "en" | "nb";
 }
 
 interface UtkastListElementProps {
   utkast: UtkastElement;
   key: string;
-  language: "en" | "nb";
+  language: Language;
 }
 
-const UtkastList = ({ utkast, language }: UtkastListProps) => {
+const UtkastList = ({ utkast }: UtkastListProps) => {
   const listIsEmpty = utkast != undefined && utkast.length == 0;
+  const language = useContext(LanguageContext);
 
   return listIsEmpty ? (
     <EmptyUtkastList language={language} />

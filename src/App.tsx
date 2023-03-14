@@ -6,7 +6,7 @@ import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
 import "@navikt/ds-css";
 import style from "./App.module.css";
 
-function App({ language = "nb" }: { language: "en" | "nb" }) {
+function App() {
   const { status: utkastApiStatus, data: utkastApiData = [] } = useQuery(utkastApiUrl, fetcher);
   const { status: digisosApiStatus, data: digisosApiData = [] } = useQuery(digisosApiUrl, fetcher);
 
@@ -18,11 +18,7 @@ function App({ language = "nb" }: { language: "en" | "nb" }) {
   return (
     <main className={style.main}>
       <div className={style.app}>
-        {showErrorMessage ? (
-          <ErrorDescription language={language} />
-        ) : (
-          <Utkast utkast={utkastlist} language={language} loading={loading} />
-        )}
+        {showErrorMessage ? <ErrorDescription /> : <Utkast utkast={utkastlist} loading={loading} />}
       </div>
     </main>
   );

@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Heading, Ingress, Loader } from "@navikt/ds-react";
 import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
 import { text } from "../language/text";
+import { LanguageContext } from "../provider/LanguageProvider";
 
 export interface UtkastProps {
   loading: boolean;
-  language: "en" | "nb";
   utkast: UtkastElement[] | undefined;
 }
 
@@ -25,7 +25,9 @@ export interface MetricValues {
   skjemanavn: string;
 }
 
-const Utkast = ({ utkast, loading, language }: UtkastProps) => {
+const Utkast = ({ utkast, loading }: UtkastProps) => {
+  const language = useContext(LanguageContext);
+
   return (
     <div className={styles.utkastWrapper}>
       <div className={styles.headerWrapper}>
@@ -41,7 +43,7 @@ const Utkast = ({ utkast, loading, language }: UtkastProps) => {
               <Loader id="loader" size="3xlarge" title="venter..." />
             </div>
           ) : (
-            <UtkastList utkast={utkast} language={language} />
+            <UtkastList utkast={utkast} />
           )}
         </div>
       </div>
