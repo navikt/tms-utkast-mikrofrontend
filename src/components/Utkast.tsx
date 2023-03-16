@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Heading, Ingress, Loader } from "@navikt/ds-react";
 import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
 import { text } from "../language/text";
+import { LanguageContext } from "../provider/LanguageProvider";
 
 export interface UtkastProps {
   loading: boolean;
@@ -25,12 +26,14 @@ export interface MetricValues {
 }
 
 const Utkast = ({ utkast, loading }: UtkastProps) => {
+  const language = useContext(LanguageContext);
+
   return (
     <div className={styles.utkastWrapper}>
       <div className={styles.headerWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
-          <Heading size={"large"}> {text.hovedoverskrift["nb"]} </Heading>
-          <Ingress>{text.description["nb"]}</Ingress>
+          <Heading size={"large"}> {text.hovedoverskrift[language]} </Heading>
+          <Ingress>{text.description[language]}</Ingress>
         </div>
       </div>
       <div className={styles.contentWrapper}>

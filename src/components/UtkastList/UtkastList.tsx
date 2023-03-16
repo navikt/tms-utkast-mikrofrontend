@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import { Next } from "@navikt/ds-icons";
 import { UtkastElement } from "../Utkast";
@@ -10,6 +10,7 @@ import { sortByOpprettet } from "../../utils/sorting";
 import { logAmplitudeEvent } from "../../utils/amplitude";
 import { text } from "../../language/text";
 import dayjs from "dayjs";
+import { LanguageContext, Language } from "../../provider/LanguageProvider";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
@@ -18,23 +19,25 @@ export interface UtkastListProps {
 interface UtkastListElementProps {
   utkast: UtkastElement;
   key: string;
+  language: Language;
 }
 
 const UtkastList = ({ utkast }: UtkastListProps) => {
   const listIsEmpty = utkast != undefined && utkast.length == 0;
+  const language = useContext(LanguageContext);
 
   return listIsEmpty ? (
     <EmptyUtkastList />
   ) : (
     <ul className={`${styles.utkastList} ${globalStyles.tekstinnhold}`} data-testid="utkastlist">
       {utkast?.sort(sortByOpprettet).map((u) => (
-        <UtkastListElement utkast={u} key={u.utkastId} />
+        <UtkastListElement language={language} utkast={u} key={u.utkastId} />
       ))}
     </ul>
   );
 };
 
-export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
+export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) => {
   const dateFormatter = (date: string) => dayjs(date).format("DD.MM.YYYY");
 
   return (
@@ -48,7 +51,7 @@ export const UtkastListElement = ({ utkast }: UtkastListElementProps) => {
             {utkast.tittel}
           </Heading>
           <BodyLong size={"small"}>
-            {text.started["nb"]} {dateFormatter(utkast.opprettet)}
+            {text.started[language]} {dateFormatter(utkast.opprettet)}
           </BodyLong>
         </span>
         <Next className={styles.nextIcon} aria-hidden={"true"} />

@@ -41,7 +41,7 @@ describe("UtkastListElement", () => {
       tittel: "Søknadsutkast",
       utkastId: "",
     };
-    render(<UtkastListElement utkast={utkast} key={utkast.utkastId} />);
+    render(<UtkastListElement language={"nb"} utkast={utkast} key={utkast.utkastId} />);
     expect(screen.getByText("Påbegynt 22.12.2022")).toBeDefined();
     expect(screen.getByText("Søknadsutkast")).toBeDefined();
     expect(screen.getByRole("link").getAttribute("href")).toBe(utkast.link);
