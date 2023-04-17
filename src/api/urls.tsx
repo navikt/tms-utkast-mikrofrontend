@@ -21,8 +21,8 @@ const UTKAST_API_URL: EnvUrl = {
 
 const DIGIGSOS_API_URL: EnvUrl = {
   local: "http://localhost:3000/api/endpoint/dittnav-api/digisos/utkast",
-  development: "https://www.dev.nav.no/dittnav-api/digisos/utkast",
-  production: "https://www.nav.no/dittnav-api/digisos/utkast",
+  development: "https://www.dev.nav.no/tms-min-side-proxy/utkast/utkast/digisos",
+  production: "https://www.nav.no/tms-min-side-proxy/utkast/utkast/digisos",
 };
 
 const BASE_URL: EnvUrl = {
