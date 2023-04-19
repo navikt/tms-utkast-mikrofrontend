@@ -1,9 +1,9 @@
 # tms-utkast-mikrofrontend
 
-Helside-mikroforentend for underside med utkast <br>
+Helside-mikroforentend for underside med utkast.
 
-url i prod: `https://www.nav.no/minside/utkast` <br>
-url i dev: `https://www.dev.nav.no/minside/utkast`
+- url i prod: `https://www.nav.no/minside/utkast`
+- url i dev: `https://www.intern.dev.nav.no/minside/utkast`
 
 # Kom i gang
 
