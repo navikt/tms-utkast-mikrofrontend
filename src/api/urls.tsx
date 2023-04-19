@@ -13,16 +13,10 @@ export const getEnvironment = () => {
 
 type EnvUrl = { development: string; production: string; local: string };
 
-const UTKAST_API_URL: EnvUrl = {
-  local: "http://localhost:3000/api/endpoint/utkast",
-  development: "https://www.dev.nav.no/tms-min-side-proxy/utkast/utkast",
-  production: "https://www.nav.no/tms-min-side-proxy/utkast/utkast",
-};
-
-const DIGIGSOS_API_URL: EnvUrl = {
-  local: "http://localhost:3000/api/endpoint/dittnav-api/digisos/utkast",
-  development: "https://www.dev.nav.no/dittnav-api/digisos/utkast",
-  production: "https://www.nav.no/dittnav-api/digisos/utkast",
+const MIN_SIDE_PROXY_URL = {
+  local: "http://localhost:3000/tms-min-side-proxy",
+  development: "https://www.intern.dev.nav.no/tms-min-side-proxy",
+  production: "https://www.nav.no/tms-min-side-proxy",
 };
 
 const BASE_URL: EnvUrl = {
@@ -30,6 +24,7 @@ const BASE_URL: EnvUrl = {
   development: "https://www.dev.nav.no/minside/",
   production: "https://www.nav.no/minside/",
 };
-export const utkastApiUrl = UTKAST_API_URL[getEnvironment()];
-export const digisosApiUrl = DIGIGSOS_API_URL[getEnvironment()];
+export const minSideProxyUrl = MIN_SIDE_PROXY_URL[getEnvironment()];
+export const utkastApiUrl = `${minSideProxyUrl}/utkast/utkast`;
+export const digisosApiUrl = `${minSideProxyUrl}/utkast/utkast/digisos`;
 export const baseUrl = BASE_URL[getEnvironment()];

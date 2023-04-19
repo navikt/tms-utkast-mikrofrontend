@@ -1,6 +1,6 @@
 export default [
   {
-    url: "/api/endpoint/utkast",
+    url: "/tms-min-side-proxy/utkast/utkast",
     method: "get",
     response: () => {
       return [
@@ -42,7 +42,7 @@ export default [
     },
   },
   {
-    url: "/api/endpoint/dittnav-api/digisos/utkast",
+    url: "/tms-min-side-proxy/utkast/utkast/digisos",
     method: "get",
     response: () => {
       return [
