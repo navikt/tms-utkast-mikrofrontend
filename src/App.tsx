@@ -14,13 +14,7 @@ function App() {
 
   const utkastlist = digisosApiData.concat(utkastApiData);
 
-  return (
-    <main className={style.main}>
-      <div className={style.app}>
-        {showErrorMessage ? <ErrorDescription /> : <Utkast utkast={utkastlist} loading={loading} />}
-      </div>
-    </main>
-  );
+  throw Error("Error");
 }
 
 export default App;
