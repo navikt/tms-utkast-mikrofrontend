@@ -15,6 +15,8 @@ function App() {
   const utkastlist = digisosApiData.concat(utkastApiData);
 
   throw Error("Error");
+
+  return null;
 }
 
 export default App;
