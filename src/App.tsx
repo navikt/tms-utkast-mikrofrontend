@@ -3,7 +3,6 @@ import { fetcher } from "./api/api";
 import { digisosApiUrl, utkastApiUrl } from "./api/urls";
 import Utkast from "./components/Utkast";
 import ErrorDescription from "./components/ErrorDescription/ErrorDescription";
-import "@navikt/ds-css";
 import style from "./App.module.css";
 
 function App() {
