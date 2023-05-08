@@ -28,8 +28,13 @@ export interface MetricValues {
 const Utkast = ({ utkast, loading }: UtkastProps) => {
   const language = useContext(LanguageContext);
 
+  const throwError = () => {
+    throw Error("My custom error");
+  };
+
   return (
     <div className={styles.utkastWrapper}>
+      <button onClick={throwError}>Throw error</button>
       <div className={styles.headerWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
           <Heading size={"large"}> {text.hovedoverskrift[language]} </Heading>
