@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   deploy:
-    uses: ./.github/workflows/build-and-deploy2.yaml
+    uses: navikt/tms-deploy/.github/workflows/mikrofrontend-deploy.yaml@main
     with:
-      CLUSTER: dev-gcp
+      cluster: '["dev-gcp"]'
     secrets: inherit
