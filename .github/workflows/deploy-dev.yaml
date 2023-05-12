@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
   deploy:
-    uses: ./.github/workflows/build-and-deploy2.yml
+    uses: ./.github/workflows/build-and-deploy2.yaml
     with:
       CLUSTER: dev-gcp
     secrets: inherit
