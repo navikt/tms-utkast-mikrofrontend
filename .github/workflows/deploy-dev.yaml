@@ -6,4 +6,5 @@ jobs:
     uses: navikt/tms-deploy/.github/workflows/mikrofrontend-deploy.yaml@main
     with:
       cluster: '["dev-gcp"]'
+      node-version: 16
     secrets: inherit
