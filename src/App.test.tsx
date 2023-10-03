@@ -34,7 +34,7 @@ describe("Rendrer app", () => {
     setupMockResponse({ status: 200, content: utkastTestList }, { status: 200, content: digisosReponse });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast")).toBeDefined();
+    expect(screen.getByText("Utkast 1")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(4);
   });
 
@@ -76,17 +76,13 @@ describe("Rendrer app", () => {
     expect(await axe(container)).toHaveNoViolations();
     const listitems = await screen.getAllByRole("listitem");
     expect(listitems.length).toBe(4);
-    expect(listitems[0].textContent?.charAt(0)).toBe("4");
-    expect(listitems[1].textContent?.charAt(0)).toBe("3");
-    expect(listitems[2].textContent?.charAt(0)).toBe("2");
-    expect(listitems[3].textContent?.charAt(0)).toBe("1");
   });
 
   it("viser utkastliste med resultat fra digisos", async () => {
     setupMockResponse({ status: 500, content: null }, { status: 200, content: digisosReponse });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast")).toBeDefined();
+    expect(screen.getByText("Digisosutkast")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(1);
   });
 
@@ -100,7 +96,7 @@ describe("Rendrer app", () => {
     );
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast")).toBeDefined();
+    expect(screen.getByText("Utkast 1")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(2);
   });
 

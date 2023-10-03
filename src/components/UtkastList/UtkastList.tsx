@@ -45,14 +45,14 @@ export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) 
       <a href={utkast.link} className={styles.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
         <div className={styles.top}>
           <div className={styles.wrapper}>
-            <PencilFillIcon className={styles.ikon} />
+            <PencilFillIcon className={styles.ikon} aria-hidden={true} />
             <BodyShort size="medium" className={styles.utkastNavn}>
               {text.hovedoverskrift[language]}
             </BodyShort>
           </div>
           <div className={`${styles.wrapper} ${styles.endretTekst}`}>
             <BodyLong size="small">{text.opprettet[language] + dateFormatter(utkast.opprettet)}</BodyLong>
-            <ChevronRightIcon className={styles.chevron} fontSize="1.25rem" />
+            <ChevronRightIcon className={styles.chevron} fontSize="1.25rem" aria-hidden={true} aria-label="Chevron" />
           </div>
         </div>
         <div className={styles.bottom}>
