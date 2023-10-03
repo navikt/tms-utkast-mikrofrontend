@@ -1,9 +1,14 @@
 .ingenUtkast {
-  padding-top: 50px;
   align-items: center;
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: var(--a-bg-default);
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 2.5rem;
 }
 
 .ingenUtkastTekst a {
@@ -12,6 +17,18 @@
 }
 
 .ingenUtkastTekst {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   color: var(--a-text-default);
   font-size: 20px;
+}
+
+.lenke {
+  color: var(--a-surface-action) !important;
+  text-decoration: underline;
+}
+
+.lenke:hover {
+  text-decoration: none;
 }

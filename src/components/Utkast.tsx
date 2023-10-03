@@ -29,23 +29,19 @@ const Utkast = ({ utkast, loading }: UtkastProps) => {
   const language = useContext(LanguageContext);
 
   return (
-    <div className={styles.utkastWrapper}>
-      <div className={styles.headerWrapper}>
+    <div className={styles.container}>
+      <div className={styles.utkastWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
           <Heading size={"large"}> {text.hovedoverskrift[language]} </Heading>
           <Ingress>{text.description[language]}</Ingress>
         </div>
-      </div>
-      <div className={styles.contentWrapper}>
-        <div className={styles.utkastContainer}>
-          {loading ? (
-            <div className={styles.loadingDiv}>
-              <Loader id="loader" size="3xlarge" title="venter..." />
-            </div>
-          ) : (
-            <UtkastList utkast={utkast} />
-          )}
-        </div>
+        {loading ? (
+          <div className={styles.loadingDiv}>
+            <Loader id="loader" size="3xlarge" title="venter..." />
+          </div>
+        ) : (
+          <UtkastList utkast={utkast} />
+        )}
       </div>
     </div>
   );

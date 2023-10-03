@@ -1,68 +1,78 @@
-.nextIcon svg {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 24px;
-  color: var(--a-text-subtle);
-}
-
-.listContentSpan {
-  width: 99%;
-}
-
 .utkastList {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   list-style: none;
   padding: 16px 0;
-  max-width: 600px;
   margin: 0;
 }
 
-.utkastList li {
-  background-color: var(--a-surface-default);
-  padding: 16px;
-  margin-top: 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px rgba(0, 0, 0, 0.12);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
+.container {
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--a-shadow-xsmall);
+  width: 100%;
+  background-color: var(--a-bg-default);
 }
 
-.utkastList li a {
+.link {
   text-decoration: none;
-  color: var(--a-text-subtle);
-  align-items: center;
+}
+
+.ikon {
+  background-color: var(--a-border-alt-3);
+  color: var(--a-bg-default);
+  font-size: 1.25rem;
+  border-radius: 0.125rem;
+  margin-right: 0.75rem;
+}
+
+.top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 16px;
-  padding-left: 16px;
-  width: 100%;
+  padding: 1rem 1rem 0.75rem 1rem;
+  border-bottom: solid 1px var(--a-border-divider);
 }
 
-.utkastList li a h2 {
+.utkastNavn {
   color: var(--a-text-default);
 }
 
-.utkastList li a p {
-  /* top | right | bottom | left */
-  margin: 4px auto 0 auto;
+.endretTekst {
+  color: var(--a-text-subtle);
 }
 
-.editSvg {
-  padding: 14px;
-  gap: 10px;
-  width: 52px;
-  height: 52px;
-  background: #e6f1f8;
-  border-radius: 999px;
-  margin-right: 16px;
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem 1rem 1rem;
 }
 
-.editSvg svg {
-  width: 24px;
-  height: 24px;
+.utkastTittel {
+  color: var(--a-text-default);
+}
+
+.opprettetTekst {
+  color: var(--a-text-subtle);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.container:hover {
+  box-shadow: var(--a-shadow-small);
+}
+
+.container:hover .utkastTittel {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.container:hover .chevron {
+  transition: 0.2s;
+  transform: translate(3px, 0);
 }

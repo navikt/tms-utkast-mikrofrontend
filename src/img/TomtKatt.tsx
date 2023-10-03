@@ -4,8 +4,8 @@ interface Props {
 
 const TomtKatt = ({ alt }: Props) => (
   <svg
-    width="163"
-    height="190"
+    width="80"
+    height="100"
     viewBox="0 0 163 190"
     fill="none"
     aria-labelledby="tomt-katt"
@@ -69,7 +69,7 @@ const TomtKatt = ({ alt }: Props) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M24 67.3714V182.521C24 186.651 27.316 190 31.4081 190H130.596C134.684 190 138 186.651 138 182.521V49.4791C138 45.3487 134.684 42 130.596 42H51.4445L24 67.3714Z"
-      fill="white"
+      fill="#E0E3E6"
     />
     <path
       fillRule="evenodd"

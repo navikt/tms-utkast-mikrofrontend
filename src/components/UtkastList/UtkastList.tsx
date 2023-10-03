@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
-import { BodyLong, Heading } from "@navikt/ds-react";
-import { Next } from "@navikt/ds-icons";
+import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
 import { UtkastElement } from "../Utkast";
 import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
 import styles from "./UtkastList.module.css";
 import globalStyles from "../../App.module.css";
-import { Edit } from "@navikt/ds-icons";
 import { sortByOpprettet } from "../../utils/sorting";
 import { logAmplitudeEvent } from "../../utils/amplitude";
 import { text } from "../../language/text";
 import dayjs from "dayjs";
 import { LanguageContext, Language } from "../../provider/LanguageProvider";
+import { ChevronRightIcon, PencilFillIcon } from "@navikt/aksel-icons";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
@@ -39,22 +38,37 @@ const UtkastList = ({ utkast }: UtkastListProps) => {
 
 export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) => {
   const dateFormatter = (date: string) => dayjs(date).format("DD.MM.YYYY");
+  const isEndret = utkast?.sistEndret != null;
 
   return (
-    <li key={utkast.utkastId}>
-      <a href={utkast.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
-        <span className={styles.editSvg}>
-          <Edit aria-hidden={"true"} />
-        </span>
-        <span className={styles.listContentSpan}>
-          <Heading size={"xsmall"} level={"2"} className={styles.aheading}>
+    <li key={utkast.utkastId} className={styles.container}>
+      <a href={utkast.link} className={styles.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
+        <div className={styles.top}>
+          <div className={styles.wrapper}>
+            <PencilFillIcon className={styles.ikon} />
+            <BodyShort size="medium" className={styles.utkastNavn}>
+              {text.hovedoverskrift[language]}
+            </BodyShort>
+          </div>
+          <div className={`${styles.wrapper} ${styles.endretTekst}`}>
+            <BodyLong size="small">{text.opprettet[language] + dateFormatter(utkast.opprettet)}</BodyLong>
+            <ChevronRightIcon className={styles.chevron} fontSize="1.25rem" />
+          </div>
+        </div>
+        <div className={styles.bottom}>
+          <Heading size="xsmall" level="2" className={styles.utkastTittel}>
             {utkast.tittel}
           </Heading>
-          <BodyLong size={"small"}>
-            {text.started[language]} {dateFormatter(utkast.opprettet)}
-          </BodyLong>
-        </span>
-        <Next className={styles.nextIcon} aria-hidden={"true"} />
+          {isEndret ? (
+            <BodyLong size="small" className={styles.opprettetTekst}>
+              {text.endret[language] + dateFormatter(utkast.opprettet)}
+            </BodyLong>
+          ) : (
+            <BodyLong size="small" className={styles.opprettetTekst}>
+              {text.ikkeEndret[language]}
+            </BodyLong>
+          )}
+        </div>
       </a>
     </li>
   );

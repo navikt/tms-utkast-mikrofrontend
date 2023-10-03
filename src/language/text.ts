@@ -59,4 +59,34 @@ export const text = {
     en: "My Page",
     nn: "Mi side",
   },
+  opprettet: {
+    nb: "Opprettet ",
+    en: "Oppretta ",
+    nn: "Created ",
+  },
+  endret: {
+    nb: "Endret ",
+    en: "Endra ",
+    nn: "Edited ",
+  },
+  ikkeEndret: {
+    nb: "Ikke endret siden opprettelse",
+    en: "Itje endra sia oppretting",
+    nn: "Not edited after creation",
+  },
+  ingenUtkastTittel: {
+    nb: "Ingen utkast",
+    en: "Ingen utkast",
+    nn: "No drafts",
+  },
+  ingenUtkastIngress: {
+    nb: "Vi kan ikke se at du har noen påbegynte søknader",
+    en: "Vi kan itje sjå at du har nokon søknader du har byrja på",
+    nn: "We can not find any started drafts",
+  },
+  ingenUtkastLenketekst: {
+    nb: "Gå til søknad og skjema",
+    en: "Gå til søknad og skjema",
+    nn: "Go to applications and forms",
+  },
 };
