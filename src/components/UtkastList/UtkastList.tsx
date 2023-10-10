@@ -23,7 +23,7 @@ interface UtkastListElementProps {
 }
 
 const UtkastList = ({ utkast }: UtkastListProps) => {
-  const listIsEmpty = true; //utkast != undefined && utkast.length == 0;
+  const listIsEmpty = utkast != undefined && utkast.length == 0;
   const language = useContext(LanguageContext);
 
   return listIsEmpty ? (
@@ -47,7 +47,7 @@ export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) 
         <div className={styles.top}>
           <div className={styles.wrapper}>
             <div className={styles.ikon}>
-              <Pencil alt="Ikon av en penn" aria-hidden={true} />
+              <Pencil aria-hidden={true} />
             </div>
             <BodyShort size="medium" className={styles.utkastNavn}>
               {text.hovedoverskrift[language]}

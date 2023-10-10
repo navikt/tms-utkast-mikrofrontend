@@ -1,10 +1,5 @@
-interface Props {
-  alt: string;
-}
-
-const TomtKatt = ({ alt }: Props) => (
+const Pencil = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <title id="pencil">{alt}</title>
     <rect width="24" height="24" rx="2" fill="#005B82" />
     <path
       fillRule="evenodd"
@@ -15,4 +10,4 @@ const TomtKatt = ({ alt }: Props) => (
   </svg>
 );
 
-export default TomtKatt;
+export default Pencil;
