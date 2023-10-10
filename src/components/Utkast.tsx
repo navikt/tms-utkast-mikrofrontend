@@ -33,7 +33,7 @@ const Utkast = ({ utkast, loading }: UtkastProps) => {
       <div className={styles.utkastWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
           <Heading size={"large"}> {text.hovedoverskrift[language]} </Heading>
-          <Ingress>{text.description[language]}</Ingress>
+          <Ingress className={styles.ingress}>{text.description[language]}</Ingress>
         </div>
         {loading ? (
           <div className={styles.loadingDiv}>

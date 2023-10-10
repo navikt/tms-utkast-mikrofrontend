@@ -21,11 +21,12 @@
 }
 
 .ikon {
+  display: flex;
   background-color: var(--a-border-alt-3);
   color: var(--a-bg-default);
-  font-size: 1.25rem;
-  border-radius: 0.125rem;
+  font-size: 1.5rem;
   margin-right: 0.75rem;
+  border-radius: 0.125rem;
 }
 
 .top {
@@ -33,7 +34,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 1rem 1rem 0.75rem 1rem;
-  border-bottom: solid 1px var(--a-border-divider);
+  border-bottom: solid 1px var(--a-border-subtle);
 }
 
 .utkastNavn {

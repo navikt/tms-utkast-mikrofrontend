@@ -33,3 +33,15 @@
 .lenke:hover {
   text-decoration: none;
 }
+
+@media (max-width: 648px) {
+  .ingenUtkast {
+    flex-direction: column-reverse;
+  }
+
+  .ingenUtkastTekst {
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+}

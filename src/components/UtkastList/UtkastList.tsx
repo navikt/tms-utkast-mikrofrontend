@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
+import { ChevronRightIcon } from "@navikt/aksel-icons";
 import { BodyLong, BodyShort, Heading } from "@navikt/ds-react";
-import { UtkastElement } from "../Utkast";
-import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
-import styles from "./UtkastList.module.css";
-import globalStyles from "../../App.module.css";
-import { sortByOpprettet } from "../../utils/sorting";
-import { logAmplitudeEvent } from "../../utils/amplitude";
-import { text } from "../../language/text";
 import dayjs from "dayjs";
-import { LanguageContext, Language } from "../../provider/LanguageProvider";
-import { ChevronRightIcon, PencilFillIcon } from "@navikt/aksel-icons";
+import { useContext } from "react";
+import globalStyles from "../../App.module.css";
+import Pencil from "../../img/Pencil";
+import { text } from "../../language/text";
+import { Language, LanguageContext } from "../../provider/LanguageProvider";
+import { logAmplitudeEvent } from "../../utils/amplitude";
+import { sortByOpprettet } from "../../utils/sorting";
+import EmptyUtkastList from "../EmptyUtkastList/EmptyUtkastList";
+import { UtkastElement } from "../Utkast";
+import styles from "./UtkastList.module.css";
 
 export interface UtkastListProps {
   utkast: UtkastElement[] | undefined;
@@ -22,7 +23,7 @@ interface UtkastListElementProps {
 }
 
 const UtkastList = ({ utkast }: UtkastListProps) => {
-  const listIsEmpty = utkast != undefined && utkast.length == 0;
+  const listIsEmpty = true; //utkast != undefined && utkast.length == 0;
   const language = useContext(LanguageContext);
 
   return listIsEmpty ? (
@@ -45,7 +46,9 @@ export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) 
       <a href={utkast.link} className={styles.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
         <div className={styles.top}>
           <div className={styles.wrapper}>
-            <PencilFillIcon className={styles.ikon} aria-hidden={true} />
+            <div className={styles.ikon}>
+              <Pencil alt="Ikon av en penn" aria-hidden={true} />
+            </div>
             <BodyShort size="medium" className={styles.utkastNavn}>
               {text.hovedoverskrift[language]}
             </BodyShort>
