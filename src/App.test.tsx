@@ -96,12 +96,12 @@ describe("Rendrer app", () => {
       {
         status: 500,
         content: null,
-      }
+      },
     );
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
     expect(screen.getByText("Utkast")).toBeDefined();
-    expect(screen.getAllByRole("listitem").length).toBe(2);
+    expect(await screen.findAllByRole("listitem")).toHaveLength(2);
   });
 
   it("viser feil-beskjed", async () => {
@@ -141,6 +141,6 @@ function renderAppComponent() {
   return render(
     <QueryClientProvider client={client}>
       <App />
-    </QueryClientProvider>
+    </QueryClientProvider>,
   );
 }
