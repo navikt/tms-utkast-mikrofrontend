@@ -1,4 +1,4 @@
-import { BodyShort } from "@navikt/ds-react";
+import { BodyLong, Heading } from "@navikt/ds-react";
 import TomtKatt from "../../img/TomtKatt";
 import style from "./EmptyUtkastList.module.css";
 import globalStyles from "../../App.module.css";
@@ -10,13 +10,17 @@ const EmptyUtkastList = () => {
   const language = useContext(LanguageContext);
   return (
     <div className={`${style.ingenUtkast} ${globalStyles.tekstinnhold}`}>
-      <TomtKatt alt={text.emptyKitten[language]} />
       <div className={style.ingenUtkastTekst}>
-        <BodyShort>
-          <strong>{text.emptySubheading[language]}</strong>
-        </BodyShort>
-        <a href={"https://www.nav.no/tjenester"}> {text.emptyOtherServices[language]}</a>
+        <Heading size="small" level="2">
+          {text.ingenUtkastTittel[language]}
+        </Heading>
+        <BodyLong size="medium">{text.ingenUtkastIngress[language]}</BodyLong>
+        <a href={"https://www.nav.no/tjenester"} className={style.lenke}>
+          {" "}
+          {text.ingenUtkastLenketekst[language]}
+        </a>
       </div>
+      <TomtKatt alt={text.emptyKitten[language]} />
     </div>
   );
 };

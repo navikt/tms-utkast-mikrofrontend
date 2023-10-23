@@ -34,7 +34,7 @@ describe("Rendrer app", () => {
     setupMockResponse({ status: 200, content: utkastTestList }, { status: 200, content: digisosReponse });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast")).toBeDefined();
+    expect(screen.getByText("Utkast 1")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(4);
   });
 
@@ -76,17 +76,18 @@ describe("Rendrer app", () => {
     expect(await axe(container)).toHaveNoViolations();
     const listitems = await screen.getAllByRole("listitem");
     expect(listitems.length).toBe(4);
-    expect(listitems[0].textContent?.charAt(0)).toBe("4");
-    expect(listitems[1].textContent?.charAt(0)).toBe("3");
-    expect(listitems[2].textContent?.charAt(0)).toBe("2");
-    expect(listitems[3].textContent?.charAt(0)).toBe("1");
+    const e1 = screen.getByText("1");
+    const e2 = screen.getByText("2");
+    const e3 = screen.getByText("3");
+    expect(e1.compareDocumentPosition(e2)).toBe(2);
+    expect(e1.compareDocumentPosition(e3)).toBe(2);
   });
 
   it("viser utkastliste med resultat fra digisos", async () => {
     setupMockResponse({ status: 500, content: null }, { status: 200, content: digisosReponse });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast")).toBeDefined();
+    expect(screen.getByText("Digisosutkast")).toBeDefined();
     expect(screen.getAllByRole("listitem").length).toBe(1);
   });
 
@@ -96,12 +97,12 @@ describe("Rendrer app", () => {
       {
         status: 500,
         content: null,
-      },
+      }
     );
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast")).toBeDefined();
-    expect(await screen.findAllByRole("listitem")).toHaveLength(2);
+    expect(screen.getByText("Utkast 1")).toBeDefined();
+    expect(screen.getAllByRole("listitem").length).toBe(2);
   });
 
   it("viser feil-beskjed", async () => {
@@ -141,6 +142,6 @@ function renderAppComponent() {
   return render(
     <QueryClientProvider client={client}>
       <App />
-    </QueryClientProvider>,
+    </QueryClientProvider>
   );
 }

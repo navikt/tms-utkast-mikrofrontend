@@ -42,7 +42,7 @@ describe("UtkastListElement", () => {
       utkastId: "",
     };
     render(<UtkastListElement language={"nb"} utkast={utkast} key={utkast.utkastId} />);
-    expect(screen.getByText("Påbegynt 22.12.2022")).toBeDefined();
+    expect(screen.getByText("Opprettet 22.12.2022")).toBeDefined();
     expect(screen.getByText("Søknadsutkast")).toBeDefined();
     expect(screen.getByRole("link").getAttribute("href")).toBe(utkast.link);
   });
