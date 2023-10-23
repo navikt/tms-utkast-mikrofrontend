@@ -76,6 +76,11 @@ describe("Rendrer app", () => {
     expect(await axe(container)).toHaveNoViolations();
     const listitems = await screen.getAllByRole("listitem");
     expect(listitems.length).toBe(4);
+    const e1 = screen.getByText("1");
+    const e2 = screen.getByText("2");
+    const e3 = screen.getByText("3");
+    expect(e1.compareDocumentPosition(e2)).toBe(2);
+    expect(e1.compareDocumentPosition(e3)).toBe(2);
   });
 
   it("viser utkastliste med resultat fra digisos", async () => {
