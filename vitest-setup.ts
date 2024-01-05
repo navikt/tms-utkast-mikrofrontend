@@ -1,7 +1,10 @@
 import "vitest-axe/extend-expect";
-import * as matchers from "vitest-axe/matchers";
+import * as axeMatchers from "vitest-axe/matchers";
 import { expect } from "vitest";
-expect.extend(matchers);
 import { fetch } from "cross-fetch";
+import matchers from "@testing-library/jest-dom/matchers";
+
+expect.extend(matchers);
+expect.extend(axeMatchers);
 
 global.fetch = fetch;

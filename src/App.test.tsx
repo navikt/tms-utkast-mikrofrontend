@@ -25,8 +25,8 @@ describe("Rendrer app", () => {
     setupMockResponse({ status: 200, content: utkastTestList });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.findByText("Utkast 1")).toBeDefined();
-    expect(screen.findAllByRole("listitem")).toHaveLength(4);
+    expect(await screen.findByRole("heading", { name: "Utkast 1" })).toBeInTheDocument();
+    expect(await screen.findAllByRole("listitem")).toHaveLength(4);
   });
 
   it("sorterer utkast på pågebynt dato", async () => {
@@ -78,7 +78,7 @@ describe("Rendrer app", () => {
     setupMockResponse({ status: 200, content: [utkastTestList[0], utkastTestList[2]] });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(await screen.findByText("Utkast 1")).toBeDefined();
+    expect(await screen.findByRole("heading", { name: "Utkast 1" })).toBeInTheDocument();
     expect(await screen.findAllByRole("listitem")).toHaveLength(2);
   });
 
@@ -86,7 +86,7 @@ describe("Rendrer app", () => {
     setupMockResponse({ status: 500, content: null });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(await screen.findByText("errordiv")).toBeDefined();
+    expect(await screen.findByRole("heading", { name: "Oisann, noe gikk galt!" })).toBeInTheDocument();
   });
 
   const setupMockResponse = (utkastApiResponse: mockProps) => {
