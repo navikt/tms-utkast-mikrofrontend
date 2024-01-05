@@ -26,5 +26,4 @@ const BASE_URL: EnvUrl = {
 };
 export const minSideProxyUrl = MIN_SIDE_PROXY_URL[getEnvironment()];
 export const utkastApiUrl = `${minSideProxyUrl}/utkast/utkast`;
-export const digisosApiUrl = `${minSideProxyUrl}/utkast/utkast/digisos`;
 export const baseUrl = BASE_URL[getEnvironment()];

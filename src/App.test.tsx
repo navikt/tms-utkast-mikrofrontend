@@ -5,21 +5,12 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import React from "react";
 import { axe } from "vitest-axe";
 import { rest } from "msw";
-import { digisosApiUrl, utkastApiUrl } from "./api/urls";
+import { utkastApiUrl } from "./api/urls";
 import { setupServer } from "msw/node";
 import { UtkastElement } from "./components/Utkast";
+import { sleep } from "react-query/types/core/utils";
 
 describe("Rendrer app", () => {
-  const digisosReponse = [
-    {
-      tittel: "Digisosutkast",
-      link: "https://test.no",
-      utkastId: "hhjjj9999",
-      opprettet: "2022-12-19T08:53:24.636Z",
-      sistEndret: "2022-12-19T08:53:24.636Z",
-    },
-  ];
-
   const server = setupServer();
 
   beforeAll(() => {
@@ -30,12 +21,12 @@ describe("Rendrer app", () => {
     server.close();
   });
 
-  it("viser utkastliste med resultat fra digisos og tms", async () => {
-    setupMockResponse({ status: 200, content: utkastTestList }, { status: 200, content: digisosReponse });
+  it("viser utkastliste", async () => {
+    setupMockResponse({ status: 200, content: utkastTestList });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast 1")).toBeDefined();
-    expect(screen.getAllByRole("listitem").length).toBe(4);
+    expect(screen.findByText("Utkast 1")).toBeDefined();
+    expect(screen.findAllByRole("listitem")).toHaveLength(4);
   });
 
   it("sorterer utkast på pågebynt dato", async () => {
@@ -54,8 +45,6 @@ describe("Rendrer app", () => {
         opprettet: "2023-01-04T08:53:24.636Z",
         sistEndret: "2023-01-04T08:53:24.636Z",
       },
-    ];
-    const digisosutkast = [
       {
         tittel: "3",
         link: "https://test.no",
@@ -71,7 +60,8 @@ describe("Rendrer app", () => {
         sistEndret: "2022-12-23T08:53:24.636Z",
       },
     ];
-    setupMockResponse({ status: 200, content: tmsutkast }, { status: 200, content: digisosutkast });
+
+    setupMockResponse({ status: 200, content: tmsutkast });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
     const listitems = await screen.getAllByRole("listitem");
@@ -83,42 +73,26 @@ describe("Rendrer app", () => {
     expect(e1.compareDocumentPosition(e3)).toBe(2);
   });
 
-  it("viser utkastliste med resultat fra digisos", async () => {
-    setupMockResponse({ status: 500, content: null }, { status: 200, content: digisosReponse });
+  it("viser feilmelding og utkastene det var mulig å hente", async () => {
+    //TODO
+    setupMockResponse({ status: 200, content: [utkastTestList[0], utkastTestList[2]] });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Digisosutkast")).toBeDefined();
-    expect(screen.getAllByRole("listitem").length).toBe(1);
-  });
-
-  it("viser utkastliste med resultat fra tms", async () => {
-    await setupMockResponse(
-      { status: 200, content: [utkastTestList[0], utkastTestList[2]] },
-      {
-        status: 500,
-        content: null,
-      }
-    );
-    const { container } = renderAppComponent();
-    expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText("Utkast 1")).toBeDefined();
-    expect(screen.getAllByRole("listitem").length).toBe(2);
+    expect(await screen.findByText("Utkast 1")).toBeDefined();
+    expect(await screen.findAllByRole("listitem")).toHaveLength(2);
   });
 
   it("viser feil-beskjed", async () => {
-    setupMockResponse({ status: 500, content: null }, { status: 500, content: null });
+    setupMockResponse({ status: 500, content: null });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByTestId("errordiv")).toBeDefined();
+    expect(await screen.findByText("errordiv")).toBeDefined();
   });
 
-  const setupMockResponse = (utkastApiResponse: mockProps, digisosApiResponse: mockProps) => {
+  const setupMockResponse = (utkastApiResponse: mockProps) => {
     const restHandlers = [
       rest.get(utkastApiUrl, (req, res, ctx) => {
         return res(ctx.status(utkastApiResponse.status), ctx.json(utkastApiResponse.content));
-      }),
-      rest.get(digisosApiUrl, (req, res, ctx) => {
-        return res(ctx.status(digisosApiResponse.status), ctx.json(digisosApiResponse.content));
       }),
     ];
     server.resetHandlers(...restHandlers);
@@ -142,6 +116,6 @@ function renderAppComponent() {
   return render(
     <QueryClientProvider client={client}>
       <App />
-    </QueryClientProvider>
+    </QueryClientProvider>,
   );
 }

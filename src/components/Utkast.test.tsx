@@ -9,16 +9,16 @@ describe("Utkast", () => {
   it("renders list", async () => {
     const { container } = render(<Utkast loading={false} utkast={utkastTestList} />);
     expect(await axe(container)).toHaveNoViolations();
-    expect(screen.getByText(utkastTestList[0].tittel)).toBeDefined();
-    expect(screen.getByText(utkastTestList[1].tittel)).toBeDefined();
-    expect(screen.getByText(utkastTestList[2].tittel)).toBeDefined();
+    expect(await screen.findByText(utkastTestList[0].tittel)).toBeDefined();
+    expect(await screen.findByText(utkastTestList[1].tittel)).toBeDefined();
+    expect(await screen.findByText(utkastTestList[2].tittel)).toBeDefined();
   });
 
   it("renders text for empty lists", async () => {
     const { container } = render(<Utkast loading={false} utkast={[]} />);
     expect(await axe(container)).toHaveNoViolations();
 
-    expect(screen.getByTitle("En svart katt som gjemmer seg bak ett papirark"));
+    expect(await screen.findByTitle("En svart katt som gjemmer seg bak ett papirark"));
   });
 
   /* TODO : gjeninnfør med language state
@@ -42,8 +42,8 @@ describe("UtkastListElement", () => {
       utkastId: "",
     };
     render(<UtkastListElement language={"nb"} utkast={utkast} key={utkast.utkastId} />);
-    expect(screen.getByText("Opprettet 22.12.2022")).toBeDefined();
-    expect(screen.getByText("Søknadsutkast")).toBeDefined();
-    expect(screen.getByRole("link").getAttribute("href")).toBe(utkast.link);
+    expect(await screen.findByText("Opprettet 22.12.2022")).toBeDefined();
+    expect(await screen.findByText("Søknadsutkast")).toBeDefined();
+    expect(await screen.findByRole("link")).toHaveAttribute("href", utkast.link);
   });
 });
