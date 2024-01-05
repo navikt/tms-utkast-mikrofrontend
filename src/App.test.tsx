@@ -64,7 +64,8 @@ describe("Rendrer app", () => {
     setupMockResponse({ status: 200, content: tmsutkast });
     const { container } = renderAppComponent();
     expect(await axe(container)).toHaveNoViolations();
-    const listitems = await screen.getAllByRole("listitem");
+    expect(await screen.findAllByRole("listitem")).toHaveLength(4);
+    const listitems = screen.getAllByRole("listitem");
     expect(listitems.length).toBe(4);
     const e1 = screen.getByText("1");
     const e2 = screen.getByText("2");
