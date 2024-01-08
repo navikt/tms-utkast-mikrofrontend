@@ -4,32 +4,40 @@ import { render, screen, utkastTestList } from "../utils/test-utils";
 import Utkast, { UtkastElement } from "./Utkast";
 import { axe } from "vitest-axe";
 import { UtkastListElement } from "./UtkastList/UtkastList";
+import { text } from "../language/text";
 
 describe("Utkast", () => {
   it("renders list", async () => {
-    const { container } = render(<Utkast loading={false} utkast={utkastTestList} />);
+    const { container } = render(<Utkast loading={false} utkast={utkastTestList} isPartialContent={false} />);
     expect(await axe(container)).toHaveNoViolations();
     expect(await screen.findByText(utkastTestList[0].tittel)).toBeDefined();
     expect(await screen.findByText(utkastTestList[1].tittel)).toBeDefined();
     expect(await screen.findByText(utkastTestList[2].tittel)).toBeDefined();
   });
 
+  it("renders list and information about possible missing content", async () => {
+    const { container } = render(<Utkast loading={false} utkast={utkastTestList} isPartialContent={true} />);
+    expect(await axe(container)).toHaveNoViolations();
+    expect(await screen.findByText(utkastTestList[0].tittel)).toBeDefined();
+    expect(await screen.findByText(utkastTestList[1].tittel)).toBeDefined();
+    expect(await screen.findByText(utkastTestList[2].tittel)).toBeDefined();
+    expect(await screen.findByTitle("Advarsel")).toBeDefined();
+  });
+
   it("renders text for empty lists", async () => {
-    const { container } = render(<Utkast loading={false} utkast={[]} />);
+    const { container } = render(<Utkast loading={false} utkast={[]} isPartialContent={false} />);
     expect(await axe(container)).toHaveNoViolations();
 
     expect(await screen.findByTitle("En svart katt som gjemmer seg bak ett papirark"));
   });
 
-  /* TODO : gjeninnfør med language state
-  it("translates page to english", async () => {
-    const { container } = render(<Utkast loading={false} utkast={utkastTestList} />);
+  it("renders text for empty lists", async () => {
+    const { container } = render(<Utkast loading={false} utkast={[]} isPartialContent={true} />);
     expect(await axe(container)).toHaveNoViolations();
-    expect(
-      screen.getByText("On this page you can find applications or other forms you have started but not completed yet")
-    ).toBeDefined();
+
+    expect(await screen.findByTitle("En svart katt som gjemmer seg bak ett papirark"));
+    expect(await screen.findByTitle("Advarsel")).toBeDefined();
   });
-   */
 });
 
 describe("UtkastListElement", () => {
