@@ -25,5 +25,5 @@ const BASE_URL: EnvUrl = {
   production: "https://www.nav.no/minside/",
 };
 export const minSideProxyUrl = MIN_SIDE_PROXY_URL[getEnvironment()];
-export const utkastApiUrl = `${minSideProxyUrl}/utkast/utkast`;
+export const utkastApiUrl = `${minSideProxyUrl}/utkast/v2/utkast`;
 export const baseUrl = BASE_URL[getEnvironment()];
