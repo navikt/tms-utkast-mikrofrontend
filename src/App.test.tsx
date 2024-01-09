@@ -1,14 +1,12 @@
-import { describe, expect, it, beforeAll, afterAll, afterEach } from "vitest";
-import { render, screen, utkastTestList } from "./utils/test-utils";
-import App from "./App";
-import { QueryClient, QueryClientProvider } from "react-query";
-import React from "react";
-import { axe } from "vitest-axe";
 import { rest } from "msw";
-import { utkastApiUrl } from "./api/urls";
 import { setupServer } from "msw/node";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { axe } from "vitest-axe";
+import App from "./App";
+import { utkastApiUrl } from "./api/urls";
 import { UtkastElement } from "./components/Utkast";
-import { sleep } from "react-query/types/core/utils";
+import { render, screen, utkastTestList } from "./utils/test-utils";
 
 describe("Rendrer app", () => {
   const server = setupServer();
