@@ -79,5 +79,8 @@
   },
   "engines": {
     "node": ">=18.15.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
