@@ -1,107 +1,25 @@
-import { rest } from "msw";
-import { setupServer } from "msw/node";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import App from "./App";
+import { render, screen } from "./utils/test-utils";
+import { server } from "./mock/server";
+import { HttpResponse, http } from "msw";
 import { utkastApiUrl } from "./api/urls";
-import { UtkastElement } from "./components/Utkast";
-import { render, screen, utkastTestList } from "./utils/test-utils";
 
-describe("Rendrer app", () => {
-  const server = setupServer();
+it("viser feil-beskjed", async () => {
+  server.use(
+    http.get(utkastApiUrl, () => {
+      return new HttpResponse(null, {
+        status: 500,
+      });
+    }),
+  );
 
-  beforeAll(() => {
-    server.listen();
-  });
-
-  afterAll(() => {
-    server.close();
-  });
-
-  it("viser utkastliste", async () => {
-    setupMockResponse({ status: 200, content: utkastTestList });
-    const { container } = renderAppComponent();
-    expect(await axe(container)).toHaveNoViolations();
-    expect(await screen.findByRole("heading", { name: "Utkast 1" })).toBeInTheDocument();
-    expect(await screen.findAllByRole("listitem")).toHaveLength(4);
-  });
-
-  it("sorterer utkast på pågebynt dato", async () => {
-    const tmsutkast = [
-      {
-        tittel: "1",
-        link: "https://test.no",
-        utkastId: "hhjjjkkk",
-        opprettet: "2022-12-19T08:53:24.636Z",
-        sistEndret: "2022-12-19T08:53:24.636Z",
-      },
-      {
-        tittel: "4",
-        link: "https://test.no",
-        utkastId: "llhhhh",
-        opprettet: "2023-01-04T08:53:24.636Z",
-        sistEndret: "2023-01-04T08:53:24.636Z",
-      },
-      {
-        tittel: "3",
-        link: "https://test.no",
-        utkastId: "hhjjjkkk",
-        opprettet: "2022-12-26T08:53:24.636Z",
-        sistEndret: "2022-12-26T08:53:24.636Z",
-      },
-      {
-        tittel: "2",
-        link: "https://test.no",
-        utkastId: "llhhhh",
-        opprettet: "2022-12-23T08:53:24.636Z",
-        sistEndret: "2022-12-23T08:53:24.636Z",
-      },
-    ];
-
-    setupMockResponse({ status: 200, content: tmsutkast });
-    const { container } = renderAppComponent();
-    expect(await axe(container)).toHaveNoViolations();
-    expect(await screen.findAllByRole("listitem")).toHaveLength(4);
-    const listitems = screen.getAllByRole("listitem");
-    expect(listitems.length).toBe(4);
-    const e1 = screen.getByText("1");
-    const e2 = screen.getByText("2");
-    const e3 = screen.getByText("3");
-    expect(e1.compareDocumentPosition(e2)).toBe(2);
-    expect(e1.compareDocumentPosition(e3)).toBe(2);
-  });
-
-  it("viser feilmelding og utkastene det var mulig å hente", async () => {
-    //TODO
-    setupMockResponse({ status: 200, content: [utkastTestList[0], utkastTestList[2]] });
-    const { container } = renderAppComponent();
-    expect(await axe(container)).toHaveNoViolations();
-    expect(await screen.findByRole("heading", { name: "Utkast 1" })).toBeInTheDocument();
-    expect(await screen.findAllByRole("listitem")).toHaveLength(2);
-  });
-
-  it("viser feil-beskjed", async () => {
-    setupMockResponse({ status: 500, content: null });
-    const { container } = renderAppComponent();
-    expect(await axe(container)).toHaveNoViolations();
-    expect(await screen.findByRole("heading", { name: "Oisann, noe gikk galt!" })).toBeInTheDocument();
-  });
-
-  const setupMockResponse = (utkastApiResponse: mockProps) => {
-    const restHandlers = [
-      rest.get(utkastApiUrl, (req, res, ctx) => {
-        return res(ctx.status(utkastApiResponse.status), ctx.json(utkastApiResponse.content));
-      }),
-    ];
-    server.resetHandlers(...restHandlers);
-  };
+  const { container } = renderAppComponent();
+  expect(await axe(container)).toHaveNoViolations();
+  expect(await screen.findByRole("heading", { name: "Oisann, noe gikk galt!" })).toBeInTheDocument();
 });
-
-interface mockProps {
-  status: number;
-  content: UtkastElement[] | null;
-}
 
 function renderAppComponent() {
   const client = new QueryClient({

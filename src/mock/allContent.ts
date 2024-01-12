@@ -1,9 +1,10 @@
-export default [
-  {
-    url: "/tms-min-side-proxy/utkast/v2/utkast",
-    method: "get",
-    response: () => {
-      return [
+import { HttpResponse, http } from "msw";
+import { utkastApiUrl } from "../api/urls";
+
+const utkastHandler = () => {
+  return [
+    http.get(utkastApiUrl, () => {
+      return HttpResponse.json([
         {
           utkastId: "12467899999",
           tittel: "Søknad om dagpenger, permittert",
@@ -37,22 +38,9 @@ export default [
           opprettet: "2023-03-13T08:53:24.636Z",
           sistEndret: "2023-03-14T08:53:24.636Z",
         },
-      ];
-    },
-  },
-  {
-    url: "/api/endpoint/utkast/v2/tom",
-    method: "get",
-    response: () => {
-      return [];
-    },
-  },
-  {
-    url: "/api/endpoint/utkast/v2/feiltest",
-    method: "get",
-    rawResponse: async (req, res) => {
-      res.statusCode = 500;
-      res.end();
-    },
-  }
-];
+      ]);
+    }),
+  ];
+};
+
+export const handlersAllContent = [...utkastHandler()];

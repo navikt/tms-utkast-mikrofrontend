@@ -14,6 +14,50 @@ describe("Utkast", () => {
     expect(await screen.findByText(utkastTestList[2].tittel)).toBeInTheDocument();
   });
 
+  it("sorterer utkast på påbegynt dato", async () => {
+    const utkast = [
+      {
+        tittel: "1",
+        link: "https://test.no",
+        utkastId: "hhjjjkkk",
+        opprettet: "2022-12-19T08:53:24.636Z",
+        sistEndret: "2022-12-19T08:53:24.636Z",
+      },
+      {
+        tittel: "4",
+        link: "https://test.no",
+        utkastId: "llhhhh",
+        opprettet: "2023-01-04T08:53:24.636Z",
+        sistEndret: "2023-01-04T08:53:24.636Z",
+      },
+      {
+        tittel: "3",
+        link: "https://test.no",
+        utkastId: "hhjjjkdf",
+        opprettet: "2022-12-26T08:53:24.636Z",
+        sistEndret: "2022-12-26T08:53:24.636Z",
+      },
+      {
+        tittel: "2",
+        link: "https://test.no",
+        utkastId: "llhhasd",
+        opprettet: "2022-12-23T08:53:24.636Z",
+        sistEndret: "2022-12-23T08:53:24.636Z",
+      },
+    ];
+
+    render(<Utkast loading={false} utkast={utkast} isPartialContent={true} />);
+
+    expect(await screen.findAllByRole("listitem")).toHaveLength(4);
+    const listitems = screen.getAllByRole("listitem");
+    expect(listitems.length).toBe(4);
+    const e1 = screen.getByText("1");
+    const e2 = screen.getByText("2");
+    const e3 = screen.getByText("3");
+    expect(e1.compareDocumentPosition(e2)).toBe(2);
+    expect(e1.compareDocumentPosition(e3)).toBe(2);
+  });
+
   it("renders list and information about possible missing content", async () => {
     const { container } = render(<Utkast loading={false} utkast={utkastTestList} isPartialContent={true} />);
 
@@ -31,7 +75,7 @@ describe("Utkast", () => {
     expect(await screen.findByTitle("En svart katt som gjemmer seg bak ett papirark")).toBeInTheDocument();
   });
 
-  it("renders text for empty lists", async () => {
+  it("renders text for empty lists with partial content", async () => {
     const { container } = render(<Utkast loading={false} utkast={[]} isPartialContent={true} />);
 
     expect(await axe(container)).toHaveNoViolations();
