@@ -3,14 +3,20 @@ import { createRoot } from "react-dom/client";
 import Mikrofrontend from "./Mikrofrontend";
 import "./index.css";
 
-if (process.env.NODE_ENV === "development") {
-  const msw = await import("./mock/browser");
-  await msw.worker.start({ onUnhandledRequest: "bypass" });
+async function enableMocking() {
+  if (process.env.NODE_ENV !== "development") {
+    return;
+  }
+
+  const { worker } = await import("./mock/browser");
+  return worker.start({ onUnhandledRequest: "bypass" });
 }
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <Mikrofrontend />
-  </React.StrictMode>,
-);
+enableMocking().then(() => {
+  const root = createRoot(document.getElementById("root") as HTMLElement);
+  root.render(
+    <React.StrictMode>
+      <Mikrofrontend />
+    </React.StrictMode>,
+  );
+});
