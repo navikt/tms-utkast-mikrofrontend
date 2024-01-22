@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Heading, Ingress, Loader } from "@navikt/ds-react";
+import { Alert, BodyLong, Heading, Ingress, Loader } from "@navikt/ds-react";
 import styles from "./Utkast.module.css";
 import globalStyles from "../App.module.css";
 import UtkastList from "./UtkastList/UtkastList";
@@ -9,6 +9,7 @@ import { LanguageContext } from "../provider/LanguageProvider";
 export interface UtkastProps {
   loading: boolean;
   utkast: UtkastElement[] | undefined;
+  isPartialContent: boolean;
 }
 
 export interface UtkastElement {
@@ -25,7 +26,7 @@ export interface MetricValues {
   skjemanavn: string;
 }
 
-const Utkast = ({ utkast, loading }: UtkastProps) => {
+const Utkast = ({ utkast, loading, isPartialContent }: UtkastProps) => {
   const language = useContext(LanguageContext);
 
   return (
@@ -33,7 +34,10 @@ const Utkast = ({ utkast, loading }: UtkastProps) => {
       <div className={styles.utkastWrapper}>
         <div className={`${styles.utkast} ${globalStyles.tekstinnhold}`}>
           <Heading size={"large"}> {text.hovedoverskrift[language]} </Heading>
-          <Ingress className={styles.ingress}>{text.description[language]}</Ingress>
+          <BodyLong className={styles.ingress} size={"large"}>
+            {text.description[language]}
+          </BodyLong>
+          {!loading && isPartialContent ? <Alert variant={"warning"}>{text.partialContent[language]}</Alert> : null}
         </div>
         {loading ? (
           <div className={styles.loadingDiv}>

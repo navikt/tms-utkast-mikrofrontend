@@ -89,4 +89,9 @@ export const text = {
     en: "Go to applications and forms",
     nn: "Gå til søknad og skjema",
   },
+  partialContent: {
+    nb: "Noen av systemene våre har problemer for øyeblikket. ",
+    en: "Some of our systems are currently experiencing issues.",
+    nn: "Noen av systemene våre har problemer for øyeblikket.",
+  },
 };

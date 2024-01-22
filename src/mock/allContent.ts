@@ -1,9 +1,10 @@
-export default [
-  {
-    url: "/tms-min-side-proxy/utkast/utkast",
-    method: "get",
-    response: () => {
-      return [
+import { HttpResponse, http } from "msw";
+import { utkastApiUrl } from "../api/urls";
+
+const utkastHandler = () => {
+  return [
+    http.get(utkastApiUrl, () => {
+      return HttpResponse.json([
         {
           utkastId: "12467899999",
           tittel: "Søknad om dagpenger, permittert",
@@ -23,29 +24,6 @@ export default [
           sistEndret: "2020-03-14T08:53:24.636Z",
           metrics: null,
         },
-      ];
-    },
-  },
-  {
-    url: "/api/endpoint/utkast/tom",
-    method: "get",
-    response: () => {
-      return [];
-    },
-  },
-  {
-    url: "/api/endpoint/utkast/feiltest",
-    method: "get",
-    rawResponse: async (req, res) => {
-      res.statusCode = 500;
-      res.end();
-    },
-  },
-  {
-    url: "/tms-min-side-proxy/utkast/utkast/digisos",
-    method: "get",
-    response: () => {
-      return [
         {
           utkastId: "124679",
           tittel: "Søknad om dagpenger, permittert",
@@ -60,22 +38,9 @@ export default [
           opprettet: "2023-03-13T08:53:24.636Z",
           sistEndret: "2023-03-14T08:53:24.636Z",
         },
-      ];
-    },
-  },
-  {
-    url: "/api/endpoint/endpoint/dittnav-api/digisos/utkast/tom",
-    method: "get",
-    response: () => {
-      return [];
-    },
-  },
-  {
-    url: "/api/endpoint/dittnav-api/digisos/utkast/feiltest",
-    method: "get",
-    rawResponse: async (req, res) => {
-      res.statusCode = 500;
-      res.end();
-    },
-  },
-];
+      ]);
+    }),
+  ];
+};
+
+export const handlersAllContent = [...utkastHandler()];

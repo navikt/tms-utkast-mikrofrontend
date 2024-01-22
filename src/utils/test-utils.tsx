@@ -36,4 +36,11 @@ export const utkastTestList: UtkastElement[] = [
     opprettet: "2022-12-19T08:53:24.636Z",
     sistEndret: "2022-12-19T08:53:24.636Z",
   },
+  {
+    tittel: "Digisosutkast",
+    link: "https://test.no",
+    utkastId: "hhjjj9999",
+    opprettet: "2022-12-19T08:53:24.636Z",
+    sistEndret: "2022-12-19T08:53:24.636Z",
+  },
 ];

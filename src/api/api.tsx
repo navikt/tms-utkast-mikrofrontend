@@ -15,5 +15,8 @@ export const fetcher = async (queryFunctionContext: QueryFunctionContext) => {
   });
 
   checkResponse(response);
-  return response.json();
+
+  return response.json().then((jsonData) => {
+    return { statusCode: response.status, data: jsonData };
+  });
 };
