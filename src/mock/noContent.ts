@@ -1,5 +1,5 @@
 import { HttpResponse, http } from "msw";
-import { featureToggleUrl, utkastApiUrl } from "../api/urls";
+import { utkastApiUrl } from "../api/urls";
 
 const ingenUtkastHandler = () => {
   return [
@@ -9,12 +9,4 @@ const ingenUtkastHandler = () => {
   ];
 };
 
-export const featureToggleHandler = () => {
-  return [
-    http.get(featureToggleUrl, () => {
-      return HttpResponse.json({});
-    }),
-  ];
-};
-
-export const handlersNoContent = [...ingenUtkastHandler(), ...featureToggleHandler()];
+export const handlersNoContent = [...ingenUtkastHandler()];
