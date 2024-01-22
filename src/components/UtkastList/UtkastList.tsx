@@ -43,7 +43,6 @@ export const UtkastListElement = ({ utkast, language }: UtkastListElementProps) 
       <a href={utkast.link} className={styles.link} onClick={() => logAmplitudeEvent(utkast.link, utkast.metrics)}>
         <div className={styles.top}>
           <div className={styles.wrapper}>
-            :
             <div className={styles.ikon}>
               <Pencil aria-hidden={true} />
             </div>
