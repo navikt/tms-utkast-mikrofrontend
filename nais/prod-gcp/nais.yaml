@@ -24,8 +24,8 @@ spec:
     - "https://www.nav.no/tms-utkast-mikrofrontend"
   resources:
     limits:
-      cpu: "3"
+      cpu: "1"
       memory: 768Mi
     requests:
-      cpu: "500m"
-      memory: 512Mi
+      cpu: "20m"
+      memory: 128Mi
