@@ -33,6 +33,7 @@ export default (): UserConfigExport => ({
   ],
   build: {
     manifest: true,
+    copyPublicDir: false,
     rollupOptions: {
       input: {
         "tms-utkast-mikrofrontend": resolve(__dirname, "src/Mikrofrontend.tsx"),
